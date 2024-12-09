@@ -13,14 +13,14 @@ export type VerificationAPISpec = Tspec.DefineApiSpec<{
             post: {
                 summary: "",
                 description: "",
-                handler: RequestHandler<ReqIdentityVeraify, ResIdentityVerify>
+                handler: RequestHandler<undefined, ResIdentityVerify, ReqIdentityVeraify>
             }
         },
         "/callback/identity-verify": {
             post: {
                 summary: "",
                 description: "",
-                handler: RequestHandler<ReqCallbackIdentityVerify, ResCallbackIdentityVerify>
+                handler: RequestHandler<undefined, ResCallbackIdentityVerify, ReqCallbackIdentityVerify>
             }
         }
     }

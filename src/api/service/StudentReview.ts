@@ -12,7 +12,7 @@ export type StudentReviewAPISpec = Tspec.DefineApiSpec<{
             post: {
                 summary: "",
                 description: "",
-                handler: RequestHandler<ReqCreateStudentReview, ResCreateStudentReview>
+                handler: RequestHandler<undefined, ResCreateStudentReview, ReqCreateStudentReview>
             }
         },
         "/:student_id": {

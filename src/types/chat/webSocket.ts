@@ -1,12 +1,12 @@
-import { Types } from "mongoose";
 import { MessageContentType } from "./content";
 
 export interface ResMessage {
-    _id: Types.ObjectId;
+    _id: string;
     seq: number;
     chatRoomId: string;
     unreadCount: number;
     senderName: string;
+    senderId: string;  // hashed uuid;
     contentType: "text";
     content: string;
     createdAt: Date;
@@ -42,7 +42,7 @@ export interface AckLastSeq {
 }
 
 export interface ResSomeoneSent {
-    id: Types.ObjectId;
+    id: string;
     lastReadSeq: number;
 }
 
@@ -69,7 +69,7 @@ interface StringfiedJSON {
 }
 
 export interface UserSentEventReturn extends StringfiedJSON {
-    chatroom: Types.ObjectId;
+    chatroom: string;
     seq: number;
     content_type: string;
     sender_id: StringfiedBuffer;

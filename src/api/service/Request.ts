@@ -12,14 +12,14 @@ export type RequestAPISpec = Tspec.DefineApiSpec<{
             post: {
                 summary: "",
                 description: "",
-                handler: RequestHandler<ReqCreateRequest, ResCreateRequest>
+                handler: RequestHandler<undefined, ResCreateRequest, ReqCreateRequest>
             }
         },
         "/:request_id": {
             get: {
                 summary: "",
                 description: "",
-                handler: RequestHandler<ReqGetRequest, ResGetRequest>
+                handler: RequestHandler<undefined, ResGetRequest, undefined, ReqGetRequest>
             }
         }
     }

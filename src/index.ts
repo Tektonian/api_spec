@@ -1,2 +1,2 @@
-export type { RecommendAPISpec } from "./api/recommend/recommend";
-
+export * as APISpec from "./api"
+export * as APIType from "./types"
