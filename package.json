@@ -7,7 +7,8 @@
   "types": "dist/esm/index.d.ts",
   "scripts": {
     "server": "npx tspec generate --specPathGlobs src/**/*.ts && tspec server --specPathGlobs src/**/*.ts",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "npx rollup -c"
   },
   "files": [
     "dist"
@@ -16,9 +17,6 @@
   "license": "ISC",
   "peerDependencies": {
     "express": "^4.21.2",
-    "meilisearch": "^0.46.0",
-    "mongoose": "^8.8.4",
-    "sequelize": "^6.37.5",
     "tspec": "^0.1.116"
   },
   "devDependencies": {
@@ -32,7 +30,10 @@
     "@rollup/plugin-typescript": "^12.1.1",
     "@types/express": "^4.17.21",
     "cross-env": "^7.0.3",
+    "eslint": "^9.16.0",
+    "eslint-config-prettier": "^9.1.0",
     "nodemon": "^3.1.7",
+    "prettier": "^3.4.2",
     "rollup": "^4.28.0",
     "rollup-plugin-dts": "^6.1.1",
     "rollup-plugin-peer-deps-external": "^2.2.4",
