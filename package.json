@@ -6,7 +6,7 @@
   "module": "dist/esm/index.js",
   "types": "dist/esm/index.d.ts",
   "scripts": {
-    "server": "npx tspec generate --specPathGlobs src/**/*.ts && tspec server --specPathGlobs src/**/*.ts",
+    "server": "npx tspec generate --specPathGlobs src/**/*.ts && npx tspec server --specPathGlobs src/**/*.ts",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "npx rollup -c"
   },

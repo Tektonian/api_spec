@@ -16,18 +16,18 @@ type SearchResponse<T = Record<string, any>> = {
 
 /** Recommend Request schema */
 export interface ReqRecommendRequest {
-    request_id: number;
+    student_id: number;
 }
 
 export interface ResRecommendRequest extends SearchResponse<Record<string, any>> {}
 
 /** Recommend Request schema */
-export interface ReqStudentRequest {
+export interface ReqRecommendStudent {
     /** 
      * Student id
      * @example 2
      */
-    student_id: number;
+    request_id: number;
 }
 
-export interface ResStudentRequest extends SearchResponse<Record<string, any>> {}
+export interface ResRecommendStudent extends SearchResponse<Record<string, any>> {}

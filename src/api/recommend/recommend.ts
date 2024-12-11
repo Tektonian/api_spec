@@ -1,5 +1,5 @@
 import { RequestHandler } from 'express';
-import { ReqStudentRequest, ResStudentRequest } from '../../types/recommend/recommend';
+import { ReqRecommendStudent, ResRecommendStudent } from '../../types/recommend/recommend';
 import { ReqRecommendRequest, ResRecommendRequest } from '../../types/recommend/recommend';
 import { Tspec } from 'tspec';
 
@@ -11,7 +11,7 @@ export type RecommendAPISpec = Tspec.DefineApiSpec<{
         post: {
           summary: 'Get recommended student list',
           description: 'Get Recommend student list by request_id'
-          handler: RequestHandler<undefined, ResStudentRequest, ReqStudentRequest>,
+          handler: RequestHandler<undefined, ResRecommendStudent, ReqRecommendStudent>,
         },
       },
       '/requests': {

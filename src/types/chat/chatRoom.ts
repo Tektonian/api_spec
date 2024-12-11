@@ -26,4 +26,11 @@ export interface ResChatRoom {
 }
 
 
+export interface ReqCreateChatRoom {
+    request_id: number;
+}
+
+export interface ResCreateChatRoom {
+    response: string;
+}
 

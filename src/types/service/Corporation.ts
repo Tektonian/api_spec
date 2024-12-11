@@ -5,5 +5,5 @@ export interface ReqGetCorpProfile {
 }
 
 export interface ResGetCorpProfile {
-
+    
 }
