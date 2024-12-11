@@ -7,11 +7,3 @@ export interface ResGetStudentReview extends JSON {
 
 }
 
-// Model attributes
-export interface ReqCreateStudentReview {
-}
-
-export interface ResCreateStudentReview {
-    status: string;
-    review: JSON;
-}
