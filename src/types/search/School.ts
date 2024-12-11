@@ -9,6 +9,6 @@ interface SearchSchoolData {
     country_code: string;
 }
 export interface ResSearchSchool {
-    response: string;
+    status: string;
     ret: SearchSchoolData[];
 }

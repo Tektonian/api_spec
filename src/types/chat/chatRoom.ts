@@ -31,6 +31,6 @@ export interface ReqCreateChatRoom {
 }
 
 export interface ResCreateChatRoom {
-    response: string;
+    status: string;
 }
 

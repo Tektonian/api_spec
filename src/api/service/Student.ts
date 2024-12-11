@@ -10,7 +10,7 @@ export type StudentAPISpec = Tspec.DefineApiSpec<{
         get: {
           summary: 'Get student profile',
           description: 'Get student profile'
-          handler: RequestHandler<undefined, ResStudentProfile, undefined, ReqStudentProfile>,
+          handler: RequestHandler<ReqStudentProfile, ResStudentProfile>,
         },
       },
     },

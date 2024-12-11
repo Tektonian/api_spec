@@ -1,17 +1,17 @@
 import { Tspec } from "tspec";
 import { RequestHandler } from "express";
 
-import { ReqGetStudentReveiw, ResGetStudentReview } from "../../types/service/StudentReview";
+import { ReqCreateStudentReveiw, ResCreateStudentReview } from "../../types/service/StudentReview";
 
 export type StudentReviewAPISpec = Tspec.DefineApiSpec<{
-    tags: ['Request'],
-    basePath: '/api/student/review',
+    tags: ['Student review'],
+    basePath: '/api/student-review',
     paths: {
-        "/:student_id": {
-            get: {
-                summary: "Get Student information",
+        "/": {
+            post: {
+                summary: "Create Student Review",
                 description: "",
-                handler: RequestHandler<ReqGetStudentReveiw, ResGetStudentReview>
+                handler: RequestHandler<undefined, ResCreateStudentReview, ReqCreateStudentReveiw>
             }
         }
     }

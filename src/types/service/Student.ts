@@ -17,7 +17,6 @@ export interface LanguageData {
 }
 
 export interface StudentProfileData {
-    userType: string;
     name_glb: object;
     nationality: string;
     age: string;

@@ -14,7 +14,7 @@ export interface ReqCallbackIdentityVerify {
 }
 
 export interface ResCallbackIdentityVerify {
-    response: string;
+    status: string;
 }
 
 export interface ReqIdentityVeraify {
@@ -23,5 +23,5 @@ export interface ReqIdentityVeraify {
 }
 
 export interface ResIdentityVerify{
-    response: string;
+    status: string;
 }

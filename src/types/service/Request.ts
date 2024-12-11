@@ -42,13 +42,16 @@ export interface ReqGetRequest {
 }
 
 // Model attributes
-export interface ResGetRequest extends RequestData {};
+export interface ResGetRequest {
+    data?: RequestData;
+    status: string;
+}
 
 export interface ReqUpdateRequestStatus {
     request_id: number;
-    status: number;
+    status: string;
 }
 
 export interface ResUpdateRequestStatus {
-    response: string;
+    status: string;
 }

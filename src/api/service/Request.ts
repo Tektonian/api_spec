@@ -19,7 +19,7 @@ export type RequestAPISpec = Tspec.DefineApiSpec<{
             get: {
                 summary: "Get Request information",
                 description: "",
-                handler: RequestHandler<undefined, ResGetRequest, undefined, ReqGetRequest>
+                handler: RequestHandler<ReqGetRequest, ResGetRequest>
             }
         }
         "/update": {
