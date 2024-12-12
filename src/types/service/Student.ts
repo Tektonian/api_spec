@@ -1,5 +1,6 @@
 
 export interface AcademicHistoryData {
+    school_id: number;
     degree: string;
     faculty: string;
     school_name: string;
@@ -10,10 +11,8 @@ export interface AcademicHistoryData {
 }
 
 export interface LanguageData {
-    level: number;
-    exam_result: string;
-    exam_name: string;
-    language: string;
+    exam_id: number;
+    exam_result: { class: string; level: number };
 }
 
 export interface StudentProfileData {

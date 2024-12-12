@@ -1,7 +1,7 @@
 
 interface RequestData {
     request_id?: number;
-    consumer_id?: number;
+    consumer_id: number;
     title: string;
     subtitle: object;
     head_count: number;
@@ -10,13 +10,16 @@ interface RequestData {
     content: string;
     are_needed?: object;
     are_required?: object;
-    start_date: string;
-    end_date: string;
+    start_date: Date;
+    end_date?: Date;
     address: string;
-    address_coordinate: any;
-    provide_food?: any;
-    provide_trans_exp?: any;
-    prep_material?: object;
+    address_coordinate: {
+        type: "Point";
+        coordinates: [lat: number, lng: number];
+    };
+    provide_food: boolean;
+    provide_trans_exp: boolean;
+    prep_material: object;
     request_status: number;
     start_time: string;
     end_time: string;
