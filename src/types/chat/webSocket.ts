@@ -1,17 +1,20 @@
 import { MessageContentType } from "./content";
 
-export interface ResMessage {
+export interface ResMessage{
     _id: string;
     seq: number;
     chatRoomId: string;
     unreadCount: number;
     senderName: string;
     senderId: string;  // hashed uuid;
-    contentType: "text";
+    contentType: "text" | "image" | "file" | "map";
     content: string;
+    data?: string;
+    url?: string;
     createdAt: Date;
     updatedAt: Date;
 }
+
 
 export interface ReqSendMessage {
     _id: string;
@@ -51,11 +54,11 @@ export interface ResMessages {
 }
 
 export interface ResSSEUnread {
-    unreadCount: Number;
-    lastSentMessageType: "text" | "image" | "map";
-    lastSentMessageContent: String;
+    unreadCount: number;
+    lastSentMessageType: "text" | "image" | "map" | "file";
+    lastSentMessageContent: string;
     lastSentMessageTime: Date;
-    lastMessageSender: String;
+    lastMessageSender: string;
 }
 
 // Event return value (`returnvalue`)
@@ -64,11 +67,8 @@ interface StringfiedBuffer {
     data: number[];
 }
 
-interface StringfiedJSON {
-    
-}
 
-export interface UserSentEventReturn extends StringfiedJSON {
+export interface UserSentEventReturn {
     chatroom: string;
     seq: number;
     content_type: string;
@@ -76,7 +76,7 @@ export interface UserSentEventReturn extends StringfiedJSON {
     image_url: string;
 }
 
-export interface UpdateChatRoomReturn extends StringfiedJSON {
+export interface UpdateChatRoomReturn {
     chatUser: never;
     message: any;
 }
@@ -85,7 +85,7 @@ export interface ResUpdateChatRoom {
     _id: string;
     seq: number;
     chatRoomId: string;
-    contentType: "text";
+    contentType: "text" | "image" | "file" | "map";
     content: string;
     senderName: string;
     createdAt: Date;

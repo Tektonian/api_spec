@@ -1,35 +1,38 @@
-type MessageStates = "SENDING" | "SENT" | "UNREAD" | "READ";
+type HashedUserIdStr = string;
 
 interface ChatMessageBase {
     _id: string; // Id should set by server-side. Before that tag Id with randomly generated string
     seq: number;
+    senderId: HashedUserIdStr;
     unreadCount: number;
-    senderName?: string;
     direction: "outgoing" | "inbound";
     createdAt?: Date;
     updatedAt?: Date;
 }
 
-export interface TextContent extends ChatMessageBase {
+interface TextContent {
     contentType: "text";
     content: string;
 }
 
-export interface ImageContent extends ChatMessageBase {
+interface ImageContent {
     contentType: "image";
     url: string;
     data: ArrayBuffer;
 }
 
-export interface FileContent extends ChatMessageBase {
+interface FileContent {
     contentType: "file";
     url: string;
     data: ArrayBuffer;
 }
 
-export interface MapContent extends ChatMessageBase {
+interface MapContent {
     contentType: "map";
-    content: string;
+    content: {
+        'lat': number,
+        'lng': number,
+    };
 }
 
 export type MessageContentType =
@@ -37,3 +40,5 @@ export type MessageContentType =
     | FileContent
     | MapContent
     | ImageContent;
+
+export type MessageContent = MessageContentType & ChatMessageBase;

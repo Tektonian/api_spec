@@ -1,24 +1,27 @@
 import { Tspec } from "tspec";
 
+type HashedUserIdStr = string;
+
 export interface ResChatUser {
-    user_id: string; // Stringfied Hash
-    username: string;
+    user_id: HashedUserIdStr; // Stringfied Hash
+    user_name: string;
+    email: string;
+    image_url: string;
+}
+
+type ParticipantType = {
+    user_name: string;
+    user_id: HashedUserIdStr;
     email: string;
     image_url: string;
 }
 
 export interface ResChatRoom {
     chatRoomId: string;
-    consumerName: string;
-    providerNames: string[];
 
-    /**
-     * @deprecated
-     * moved to participants
-     */
-    participant_ids: string[];
+    consumer: ParticipantType;
 
-    participants: any[];
+    participants: ParticipantType[];
     messageSeq: number;
     lastSender: string;
     lastMessage: string;
