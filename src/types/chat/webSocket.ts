@@ -1,5 +1,21 @@
 import { MessageContentType } from "./content";
 
+const CONTENT_TYPE_ENUM = {
+    TEXT: "text",
+    IMAGE: "image",
+    FILE: "file",
+    MAP: "map",
+    ALARM: "alarm",
+} as const
+
+/**
+ * Enum for content type
+ * @enum {number}
+ */
+export type CONTENT_TYPE_ENUM = typeof CONTENT_TYPE_ENUM[keyof typeof CONTENT_TYPE_ENUM];
+
+
+
 export interface ResMessage{
     _id: string;
     seq: number;
@@ -7,7 +23,8 @@ export interface ResMessage{
     unreadCount: number;
     senderName: string;
     senderId: string;  // hashed uuid;
-    contentType: "text" | "image" | "file" | "map";
+    contentType: CONTENT_TYPE_ENUM;
+    direction: "outgoing" | "inbound";
     content: string;
     data?: string;
     url?: string;
@@ -24,6 +41,7 @@ export interface ReqSendMessage {
 }
 
 export interface ReqTryJoin {
+    id: string;
     // last message sequence number of user device
     // last sequence may different by devices
     deviceLastSeq: number;
@@ -55,7 +73,7 @@ export interface ResMessages {
 
 export interface ResSSEUnread {
     unreadCount: number;
-    lastSentMessageType: "text" | "image" | "map" | "file";
+    lastSentMessageType: CONTENT_TYPE_ENUM;
     lastSentMessageContent: string;
     lastSentMessageTime: Date;
     lastMessageSender: string;
@@ -71,23 +89,24 @@ interface StringfiedBuffer {
 export interface UserSentEventReturn {
     chatroom: string;
     seq: number;
-    content_type: string;
+    content_type: CONTENT_TYPE_ENUM;
+    content: string;
+    url: string;
+    _id: string;
     sender_id: StringfiedBuffer;
     image_url: string;
+    created_at: Date;
+    updated_at: Date;
 }
 
-export interface UpdateChatRoomReturn {
-    chatUser: never;
-    message: any;
-}
+
 
 export interface ResUpdateChatRoom {
     _id: string;
     seq: number;
     chatRoomId: string;
-    contentType: "text" | "image" | "file" | "map";
+    contentType: CONTENT_TYPE_ENUM;
     content: string;
-    senderName: string;
     createdAt: Date;
     updatedAt: Date;
 }
