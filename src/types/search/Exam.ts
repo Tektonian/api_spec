@@ -6,6 +6,9 @@ interface SearchExamData {
     lang_country_code: string;
 }
 
+export interface ReqSearchExam {
+    // Get request
+}
 export interface ResSearchExam {
     status: string;
     ret: SearchExamData[];
