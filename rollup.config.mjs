@@ -4,18 +4,19 @@ import { dts } from "rollup-plugin-dts";
 import peerDepsExternal from "rollup-plugin-peer-deps-external";
 import resolve from "@rollup/plugin-commonjs"
 
-
 const External = [
 
 ];
 
 export default [
   {
-    input: './src/index.ts',
+    input: ['./src/index.ts', 'src/types/index.ts', 'src/api/index.ts', 'src/enum/index.ts'],
     External,
     output: [{
-      file: 'dist/esm/index.js',
+      dir: 'dist/esm/',
       format: 'esm',
+      preserveModules: true,
+      entryFileNames: "[name].js"
     }],
     plugins: [
       peerDepsExternal(),
@@ -35,7 +36,7 @@ export default [
   },
   {
     input: './src/index.ts',
-    output: [{ file: 'dist/esm/index.d.ts', format: 'esm' }],
+    output: [{ dir: 'dist/esm/', format: 'esm', preserveModules: true, entryFileNames: "[name].d.ts" }],
     plugins: [dts()],
     External,
   },

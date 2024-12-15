@@ -3,22 +3,29 @@
   "version": "1.0.0",
   "description": "API spec definition",
   "type": "module",
-  "exports":{
+  "files": [
+    "dist"
+  ],
+  "exports": {
     ".": {
-      "types": "dist/esm/index.d.ts",
-      "require": "dist/cjs/index.js",
-      "import": "dist/esm/index.js"
+      "import": {
+        "default": "./dist/esm/index.js",
+        "types": "./dist/esm/index.d.ts"
+      }
+    },
+    "./enum": {
+      "import": {
+        "default": "./dist/esm/enum/index.js",
+        "types": "./dist/esm/enum/index.d.ts"
+      }
+
     }
   },
-  "main": "dist/cjs/index.js",
   "scripts": {
     "server": "npx tspec generate --specPathGlobs src/**/*.ts && npx tspec server --specPathGlobs src/**/*.ts",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "npx rollup -c"
   },
-  "files": [
-    "dist"
-  ],
   "author": "",
   "license": "ISC",
   "peerDependencies": {
@@ -32,6 +39,7 @@
     "@babel/preset-typescript": "^7.26.0",
     "@rollup/plugin-babel": "^6.0.4",
     "@rollup/plugin-commonjs": "^28.0.1",
+    "@rollup/plugin-multi-entry": "^6.0.1",
     "@rollup/plugin-node-resolve": "^15.3.0",
     "@rollup/plugin-typescript": "^12.1.1",
     "@types/express": "^4.17.21",
