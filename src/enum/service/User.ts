@@ -1,3 +1,6 @@
+/**
+ * User Role enum
+ */
 export const USER_ROLE_ENUM = {
     NOT_VERIFIED: "",   // If empty user didn't verified email
     NORMAL: "normal",   // User verified email

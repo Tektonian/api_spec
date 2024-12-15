@@ -1,3 +1,6 @@
+/**
+ * Request status type
+ */
 export const REQUEST_STATUS_ENUM = {
     /** consumer wrote a request but not paid */
     POSTED: 0,
@@ -15,6 +18,5 @@ export const REQUEST_STATUS_ENUM = {
 
 /**
  * Enum for request status
- * @enum {number}
  */
 export type REQUEST_STATUS_ENUM = typeof REQUEST_STATUS_ENUM[keyof typeof REQUEST_STATUS_ENUM];
