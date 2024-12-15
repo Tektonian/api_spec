@@ -18,7 +18,7 @@ export interface LanguageData {
 export interface StudentProfileData {
     name_glb: object;
     nationality: string;
-    age: string;
+    bith_date: Date;
     phone_number: string;
     emergency_contact: string;
     email_verified?: Date;
