@@ -1,4 +1,4 @@
-import { ReqStudentProfile, ResStudentProfile } from "../../types/service/Student";
+import { ReqGetStudentProfile, ResGetStudentProfile } from "../../types/service/Student";
 import { RequestHandler } from 'express';
 import { Tspec } from 'tspec';
 
@@ -10,7 +10,7 @@ export type StudentAPISpec = Tspec.DefineApiSpec<{
         get: {
           summary: 'Get student profile',
           description: 'Get student profile'
-          handler: RequestHandler<ReqStudentProfile, ResStudentProfile>,
+          handler: RequestHandler<ReqGetStudentProfile, ResGetStudentProfile>,
         },
       },
     },

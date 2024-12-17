@@ -61,14 +61,34 @@ export interface StudentReviewData {
     was_proactive: number;
 }
 
-export interface ReqStudentProfile {
+export interface ReqGetStudentProfile {
     student_id: number;
 }
 
-export interface ResStudentProfile {
+export interface ResGetStudentProfile {
     profile: StudentProfileData;
     review: StudentReviewData[];
 }
+
+export interface ReqCreateStudentProfile {
+    name_glb: object;
+    nationality: string;
+    bith_date: Date;
+    phone_number: string;
+    emergency_contact: string;
+    email_verified?: Date;
+    gender: 0 | 1 // 남 | 여
+    image: string;
+    has_car?: boolean;
+    keyword_list?: object;
+    academic_history: AcademicHistoryData[];
+    exam_history: LanguageData[];
+}
+
+export interface ResCreateStudentProfile {
+
+}
+
 // Model attributes
 export interface ReqCreateStudentReview {
 }
