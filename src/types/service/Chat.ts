@@ -1,21 +1,21 @@
 import { Tspec } from "tspec";
 
-export interface ReqCreateChatRoom{
+export interface ReqCreateChatRoom {
     request_id: number;
 }
 
-export interface ResCreateChatRoom{
+export interface ResCreateChatRoom {
     /**
      * @deprecated
      */
     status: string;
 }
 
-export interface ReqUploadImage{}
+export interface ReqUploadImage {}
 
 export interface ResUploadImage {}
 
-export interface ReqCheckAttending{
+export interface ReqCheckAttending {
     request_id: number;
 }
-export interface ResCheckAttending{}
+export interface ResCheckAttending {}

@@ -1,28 +1,13 @@
-import { MessageContentType } from "./content";
+import { MessageContentType } from "./contentType";
+import { CONTENT_TYPE_ENUM } from "../../enum/chat/contentType";
 
-const CONTENT_TYPE_ENUM = {
-    TEXT: "text",
-    IMAGE: "image",
-    FILE: "file",
-    MAP: "map",
-    ALARM: "alarm",
-} as const
-
-/**
- * Enum for content type
- * @enum {number}
- */
-export type CONTENT_TYPE_ENUM = typeof CONTENT_TYPE_ENUM[keyof typeof CONTENT_TYPE_ENUM];
-
-
-
-export interface ResMessage{
+export interface ResMessage {
     _id: string;
     seq: number;
     chatRoomId: string;
     unreadCount: number;
     senderName: string;
-    senderId: string;  // hashed uuid;
+    senderId: string; // hashed uuid;
     contentType: CONTENT_TYPE_ENUM;
     direction: "outgoing" | "inbound";
     content: string;
@@ -32,14 +17,20 @@ export interface ResMessage{
     updatedAt: Date;
 }
 
-
+/**
+ * User send message
+ */
 export interface ReqSendMessage {
     _id: string;
     senderId: string;
     chatRoomId: string;
     message: MessageContentType;
 }
+interface ResSendMessage {} // No response
 
+/**
+ * When user tried to join a chatroom
+ */
 export interface ReqTryJoin {
     id: string;
     // last message sequence number of user device
@@ -53,13 +44,27 @@ export interface ResTryJoin {
     lastReadSequences: number[];
 }
 
+/**
+ * User request back-end server to update last_read_sequence
+ */
 export interface ReqUpdateLastRead {
     lastSeq: number;
 }
+interface ResUpdateLastRead {} // No respond
 
-export interface AckLastSeq {
-    lastSeq: number;
-    chatRoomId: string;
+/**
+ * User sent event
+ */
+export interface UserSentEventReturn {
+    chatroom: string;
+    seq: number;
+    content_type: CONTENT_TYPE_ENUM;
+    content: string;
+    url: string;
+    _id: string;
+    sender_id: StringfiedBuffer;
+    created_at: Date;
+    updated_at: Date;
 }
 
 export interface ResSomeoneSent {
@@ -67,10 +72,9 @@ export interface ResSomeoneSent {
     lastReadSeq: number;
 }
 
-export interface ResMessages {
-    messages: ResMessage[];
-}
-
+/**
+ * SSE event return
+ */
 export interface ResSSEUnread {
     unreadCount: number;
     lastSentMessageType: CONTENT_TYPE_ENUM;
@@ -81,25 +85,9 @@ export interface ResSSEUnread {
 
 // Event return value (`returnvalue`)
 interface StringfiedBuffer {
-    type: 'Buffer';
+    type: "Buffer";
     data: number[];
 }
-
-
-export interface UserSentEventReturn {
-    chatroom: string;
-    seq: number;
-    content_type: CONTENT_TYPE_ENUM;
-    content: string;
-    url: string;
-    _id: string;
-    sender_id: StringfiedBuffer;
-    image_url: string;
-    created_at: Date;
-    updated_at: Date;
-}
-
-
 
 export interface ResUpdateChatRoom {
     _id: string;
@@ -110,3 +98,5 @@ export interface ResUpdateChatRoom {
     createdAt: Date;
     updatedAt: Date;
 }
+
+export interface ResRefreshChatRoom {}

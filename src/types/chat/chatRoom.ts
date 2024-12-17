@@ -1,20 +1,13 @@
 import { Tspec } from "tspec";
 
-type HashedUserIdStr = string;
-
-export interface ResChatUser {
-    user_id: HashedUserIdStr; // Stringfied Hash
-    user_name: string;
-    email: string;
-    image_url: string;
-}
+type HashedUserIdStr = string; // Stringfied Hash
 
 type ParticipantType = {
     user_name: string;
     user_id: HashedUserIdStr;
     email: string;
     image_url: string;
-}
+};
 
 export interface ResChatRoom {
     title: string;
@@ -26,13 +19,3 @@ export interface ResChatRoom {
     lastMessage: string;
     lastSentTime: Date;
 }
-
-
-export interface ReqCreateChatRoom {
-    request_id: number;
-}
-
-export interface ResCreateChatRoom {
-    status: string;
-}
-
