@@ -1,27 +1,29 @@
 import type { REQUEST_STATUS_ENUM } from "../../enum/service/Request";
 
-interface RequestData {
-    request_id?: number;
-    consumer_id: number;
+interface RequestCard {
     title: string;
-    subtitle: object;
-    head_count: number;
     reward_price: number;
-    currency: string;
-    content: string;
-    are_needed?: object;
-    are_required?: object;
-    start_date: Date;
-    end_date?: Date;
+    currency: "USD" | "KRW" | "JPY" | "";
     address: string;
+    start_date: Date;
+    request_status: REQUEST_STATUS_ENUM;
+    logo_image: string;
+}
+
+interface RequestData extends RequestCard {
+    consumer_id: number;
+    head_count: number;
+    content: string;
+    are_needed?: string[];
+    are_required?: string[];
+    end_date?: Date;
     address_coordinate: {
         type: "Point";
         coordinates: [lat: number, lng: number];
     };
     provide_food: boolean;
     provide_trans_exp: boolean;
-    prep_material: object;
-    request_status: REQUEST_STATUS_ENUM;
+    prep_material: string[];
     start_time: string;
     end_time: string;
     created_at?: Date;
@@ -30,11 +32,27 @@ interface RequestData {
     orgn_id?: number;
 }
 
+interface CorporationCard {
+    corp_name: string;
+    nationality: string;
+    ceo_name?: string;
+    corp_address?: string;
+    biz_started_at?: string;
+    biz_type?: string;
+    logo_image?: string;
+    site_url?: string;
+    isMypage?: boolean;
+    corp_domain?: string;
+    phone_number?: string;
+    corp_num?: number;
+    biz_num?: number;
+    corp_status?: string;
+}
+
 // Model attribute
 export interface ReqCreateRequest {
     role: string;
     data: RequestData;
-
 }
 
 export interface ResCreateRequest {
@@ -45,22 +63,22 @@ export interface ReqGetRequest {
     request_id: number;
 }
 
-// Model attributes
 export interface ResGetRequest {
-    data: RequestData;
-    status: string;
+    request: RequestData;
+    corp_card: CorporationCard;
+    past_requests: RequestCard[];
 }
 
+// Model attributes
 
-export interface ReqUpdateRequestStatusContract{
+export interface ReqUpdateRequestStatusContract {
     request_id: number;
 }
 
-export interface ResUpdateRequestStatusContract{}
+export interface ResUpdateRequestStatusContract {}
 
-
-export interface ReqUpdateRequestProviderIds{
+export interface ReqUpdateRequestProviderIds {
     chatroom_id: string;
 }
 
-export interface ResUpdateRequestProviderIds{}
+export interface ResUpdateRequestProviderIds {}
