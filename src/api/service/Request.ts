@@ -3,7 +3,9 @@ import { RequestHandler } from "express";
 
 import { ReqCreateRequest, ResCreateRequest } from "../../types/service/Request";
 import { ReqGetRequest, ResGetRequest } from "../../types/service/Request";
-import { ReqUpdateRequestStatus, ResUpdateRequestStatus } from "../../types/service/Request";
+import { ReqUpdateRequestStatusContract, ResUpdateRequestStatusContract } from "../../types/service/Request";
+import { ReqUpdateRequestProviderIds, ResUpdateRequestProviderIds } from "../../types/service/Request";
+
 export type RequestAPISpec = Tspec.DefineApiSpec<{
     tags: ['Request'],
     basePath: '/api/request',
@@ -23,14 +25,30 @@ export type RequestAPISpec = Tspec.DefineApiSpec<{
             }
         }
         "/update": {
-            patch: {
-                summary: "Update request status",
-                description: "",
-                handler: RequestHandler<undefined, ResUpdateRequestStatus, ReqUpdateRequestStatus>
-            },
             post: {
                 summary: "Update request content",
                 description: "",
+            }
+        },
+        "/status/contract": {
+            post: {
+                summary: "Change request_status to contract"
+                handler: RequestHandler<undefined, ReqUpdateRequestStatusContract, ResUpdateRequestStatusContract>
+            }
+        },
+        "/status/finish": {
+            post: {
+                summary: "Change request_status to finish",
+            },
+        },
+        "/provider": {
+            post: {
+                summary: "Update provider list",
+                description: "Update provider_ids in Request table. \
+                              It works as flipping boolean. \
+                              If you send once it will add user_id, and \
+                              if you send one more it will remove usr_id",
+                handler: RequestHandler<undefined, ReqUpdateRequestProviderIds, ResUpdateRequestProviderIds>
             }
         }
     }

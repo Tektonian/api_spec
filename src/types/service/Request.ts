@@ -51,11 +51,16 @@ export interface ResGetRequest {
     status: string;
 }
 
-export interface ReqUpdateRequestStatus {
+
+export interface ReqUpdateRequestStatusContract{
     request_id: number;
-    update: REQUEST_STATUS_ENUM;
 }
 
-export interface ResUpdateRequestStatus {
-    status: string;
+export interface ResUpdateRequestStatusContract{}
+
+
+export interface ReqUpdateRequestProviderIds{
+    chatroom_id: string;
 }
+
+export interface ResUpdateRequestProviderIds{}
