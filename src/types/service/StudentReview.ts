@@ -2,7 +2,7 @@ interface ReviewData{
 
 }
 
-type EvalScore = 0 | 1 | 2 | 3 | 4 | 5
+type EvalScore = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10
 
 // Model attribute
 export interface ReqCreateStudentReveiw {
@@ -24,4 +24,3 @@ export interface ReqCreateStudentReveiw {
 export interface ResCreateStudentReview {
     status: 'ok';
 }
-

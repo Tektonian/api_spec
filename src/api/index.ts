@@ -1,8 +1,9 @@
-export type { RecommendAPISpec } from "./recommend/recommend"
-export type { WebSocketAPISpec } from "./chat/webSocket"
-export type { RequestAPISpec } from "./service/Request"
-export type { StudentReviewAPISpec } from "./service/StudentReview"
-export type { StudentAPISpec } from "./service/Student"
-export type { VerificationAPISpec } from "./service/Verification"
-export type { SearchSchoolAPISpec } from "./search/School"
-export type { SearchExamAPISpec } from "./search/Exam"
+export type { RecommendAPISpec } from "./recommend/recommend";
+export type { WebSocketAPISpec } from "./chat/webSocket";
+export type { RequestAPISpec } from "./service/Request";
+export type { StudentReviewAPISpec } from "./service/StudentReview";
+export type { StudentAPISpec } from "./service/Student";
+export type { VerificationAPISpec } from "./service/Verification";
+export type { SearchSchoolAPISpec } from "./search/School";
+export type { SearchExamAPISpec } from "./search/Exam";
+export type { CorporationAPISpec } from "./service/Corporation";

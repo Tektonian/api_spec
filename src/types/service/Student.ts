@@ -1,4 +1,5 @@
-
+import { REQUEST_STATUS_ENUM } from "../../enum/service/Request";
+import { RequestCard } from "./Request";
 export interface AcademicHistoryData {
     school_id: number;
     degree: string;
@@ -6,7 +7,7 @@ export interface AcademicHistoryData {
     school_name: string;
     start_date: string;
     end_date: string;
-    status: 0 | 1 | 2; // 졸업 | 재학 | 휴학 
+    status: 0 | 1 | 2; // 졸업 | 재학 | 휴학
     logo?: string;
 }
 
@@ -18,11 +19,11 @@ export interface LanguageData {
 export interface StudentProfileData {
     name_glb: object;
     nationality: string;
-    bith_date: Date;
+    birth_date: Date;
     phone_number: string;
     emergency_contact: string;
     email_verified?: Date;
-    gender: 0 | 1 // 남 | 여
+    gender: 0 | 1; // 남 | 여
     image: string;
     has_car?: boolean;
     keyword_list?: object;
@@ -30,19 +31,8 @@ export interface StudentProfileData {
     exam_history: LanguageData[];
 }
 
-interface RequestOfStudentReview {
-    request_id: number;
-    title: string;
-    subtitle: string;
-    reward_price: number;
-    currency: string;
-    address: string;
-    start_date: string;
-    logo_image: string;
-}
-
 export interface StudentReviewData {
-    request: RequestOfStudentReview
+    request: RequestCard;
     commu_ability: number;
     consumer_id: number;
     corp_id: number | null;
@@ -67,7 +57,7 @@ export interface ReqGetStudentProfile {
 
 export interface ResGetStudentProfile {
     profile: StudentProfileData;
-    review: StudentReviewData[];
+    requests: RequestCard[];
 }
 
 export interface ReqCreateStudentProfile {
@@ -77,7 +67,7 @@ export interface ReqCreateStudentProfile {
     phone_number: string;
     emergency_contact: string;
     email_verified?: Date;
-    gender: 0 | 1 // 남 | 여
+    gender: 0 | 1; // 남 | 여
     image: string;
     has_car?: boolean;
     keyword_list?: object;
@@ -85,13 +75,10 @@ export interface ReqCreateStudentProfile {
     exam_history: LanguageData[];
 }
 
-export interface ResCreateStudentProfile {
-
-}
+export interface ResCreateStudentProfile {}
 
 // Model attributes
-export interface ReqCreateStudentReview {
-}
+export interface ReqCreateStudentReview {}
 
 export interface ResCreateStudentReview {
     status: string;

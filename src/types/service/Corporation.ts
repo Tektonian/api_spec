@@ -1,4 +1,5 @@
-import { Tspec } from "tspec"
+import { Tspec } from "tspec";
+import { RequestCard } from "./Request";
 
 interface Corporation {
     corp_id: number;
@@ -15,16 +16,6 @@ interface Corporation {
     biz_type?: string;
     logo_image?: string;
     site_url?: string;
-}
-
-interface RequestCard {
-    title: string;
-    reward_price: number;
-    currency: "USD" | "KRW" | "JPY" | "";
-    address: string;
-    start_date: Date;
-    renderLogo: boolean;
-    logo_image?: string;
 }
 
 export interface ReqCreateCorpProfile {
@@ -54,5 +45,5 @@ export interface ReqGetCorpProfile {
 
 export interface ResGetCorpProfile {
     corp: Corporation;
-    past_requests: RequestCard[];
+    requests: RequestCard[];
 }

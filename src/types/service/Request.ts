@@ -1,6 +1,7 @@
 import type { REQUEST_STATUS_ENUM } from "../../enum/service/Request";
 
-interface RequestCard {
+export interface RequestCard {
+    request_id: number;
     title: string;
     reward_price: number;
     currency: "USD" | "KRW" | "JPY" | "";
@@ -10,7 +11,7 @@ interface RequestCard {
     logo_image: string;
 }
 
-interface RequestData extends RequestCard {
+export interface RequestData extends RequestCard {
     consumer_id: number;
     head_count: number;
     content: string;
@@ -66,7 +67,7 @@ export interface ReqGetRequest {
 export interface ResGetRequest {
     request: RequestData;
     corp_card: CorporationCard;
-    past_requests: RequestCard[];
+    other_requests: RequestCard[];
 }
 
 // Model attributes
