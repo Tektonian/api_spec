@@ -89,14 +89,5 @@ interface StringfiedBuffer {
     data: number[];
 }
 
-export interface ResUpdateChatRoom {
-    _id: string;
-    seq: number;
-    chatRoomId: string;
-    contentType: CONTENT_TYPE_ENUM;
-    content: string;
-    createdAt: Date;
-    updatedAt: Date;
-}
-
+// TODO
 export interface ResRefreshChatRoom {}
