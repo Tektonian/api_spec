@@ -1,18 +1,22 @@
-import { RequestHandler } from 'express';
-import { ReqSearchSchool, ResSearchSchool } from '../../types/search/School';
-import { Tspec } from 'tspec';
+import { RequestHandler } from "express";
+import { ReqSearchSchoolScheme } from "../../joi/search/School";
+import { ReqSearchSchool, ResSearchSchool } from "../../types/search/School";
+import { Tspec } from "tspec";
 
 export type SearchSchoolAPISpec = Tspec.DefineApiSpec<{
-    tags: ['Search School']
-    basePath: '/api/search/schools',
+    tags: ["Search School"];
+    basePath: "/api/search/schools";
     paths: {
-      '/': {
-        get: {
-          summary: 'Get recommended student list',
-          description: 'Get Recommend student list by request_id'
-          handler: RequestHandler<ReqSearchSchool, ResSearchSchool>,
-        },
-      },
-    },
-  }>;
-
+        "/": {
+            get: {
+                summary: "Get recommended student list";
+                description: "Get Recommend student list by request_id";
+                query: ReqSearchSchool["query"];
+                responses: {
+                    200: ResSearchSchool;
+                };
+                handler: RequestHandler<undefined, ResSearchSchool, undefined, ReqSearchSchool["query"]>;
+            };
+        };
+    };
+}>;

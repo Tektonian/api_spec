@@ -1,7 +1,13 @@
-export interface ReqSearchSchool {
-    country_code: string;
-}
+import * as Joi from "@hapi/joi";
+// This is optional, but without it you need to manually generate
+// a type or interface for ValidatedRequestSchema members
+import "joi-extract-type";
 
+import { ReqSearchSchoolScheme } from "../../joi/search/School";
+
+export interface ReqSearchSchool {
+    ["query"]: Joi.extractType<typeof ReqSearchSchoolScheme>;
+}
 interface SearchSchoolData {
     school_id: number;
     school_name: string;

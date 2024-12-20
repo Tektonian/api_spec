@@ -18,6 +18,12 @@
                 "default": "./dist/esm/enum/index.js",
                 "types": "./dist/esm/enum/index.d.ts"
             }
+        },
+        "./joi": {
+            "import": {
+                "default": "./dist/esm/joi/index.js",
+                "types": "./dist/esm/joi/index.d.ts"
+            }
         }
     },
     "scripts": {
@@ -28,7 +34,8 @@
     "author": "",
     "license": "ISC",
     "peerDependencies": {
-        "express": "^4.21.2",
+        "joi": "^17.13.3",
+        "joi-extract-type": "^15.0.8",
         "tspec": "^0.1.116"
     },
     "devDependencies": {

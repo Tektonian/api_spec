@@ -2,6 +2,7 @@ const CONTENT_TYPE_ENUM = {
     TEXT: "text",
     IMAGE: "image",
     FILE: "file",
+    HTML: "html",
     MAP: "map",
     ALARM: "alarm",
 } as const;
