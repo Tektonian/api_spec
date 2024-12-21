@@ -25,8 +25,8 @@ export interface StudentProfileData {
     email_verified?: Date;
     gender: 0 | 1; // 남 | 여
     image: string;
-    has_car?: boolean;
-    keyword_list?: object;
+    has_car: 0 | 1;
+    keyword_list: string[];
     academic_history: AcademicHistoryData[];
     exam_history: LanguageData[];
 }
@@ -58,6 +58,7 @@ export interface ReqGetStudentProfile {
 export interface ResGetStudentProfile {
     profile: StudentProfileData;
     requests: RequestCard[];
+    reviews: StudentReviewData[];
 }
 
 export interface ReqCreateStudentProfile {
@@ -69,8 +70,8 @@ export interface ReqCreateStudentProfile {
     email_verified?: Date;
     gender: 0 | 1; // 남 | 여
     image: string;
-    has_car?: boolean;
-    keyword_list?: object;
+    has_car?: 0 | 1;
+    keyword_list?: string[];
     academic_history: AcademicHistoryData[];
     exam_history: LanguageData[];
 }
