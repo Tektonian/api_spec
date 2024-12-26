@@ -3,12 +3,12 @@ import { dts } from "rollup-plugin-dts";
 import peerDepsExternal from "rollup-plugin-peer-deps-external";
 import resolve from "@rollup/plugin-commonjs";
 
-const External = [];
+const External = ["@hapi/joi", "joi-to-json"];
 
 export default [
     {
         input: ["./src/index.ts", "src/types/index.ts", "src/api/index.ts", "src/enum/index.ts", "src/joi/index.ts"],
-        External,
+        external: External,
         output: [
             {
                 dir: "dist/esm/",
@@ -54,7 +54,7 @@ export default [
                 extensions: [".js", ".ts"],
             }),
         ],
-        External,
+        external: External,
     },
     {
         input: "./src/index.ts",

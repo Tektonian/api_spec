@@ -5,9 +5,8 @@ import "joi-extract-type";
 
 import { ReqSearchSchoolScheme } from "../../joi/search/School";
 
-export interface ReqSearchSchool {
-    ["query"]: Joi.extractType<typeof ReqSearchSchoolScheme>;
-}
+export interface ReqSearchSchool extends Joi.extractType<typeof ReqSearchSchoolScheme> {}
+
 interface SearchSchoolData {
     school_id: number;
     school_name: string;

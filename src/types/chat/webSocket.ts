@@ -1,5 +1,6 @@
-import { MessageContentType } from "./contentType";
+import { MessageContentType } from "./content";
 import { CONTENT_TYPE_ENUM } from "../../enum/chat/contentType";
+import { ResChatRoom, ResRequest } from "./chatRoom";
 
 export interface ResMessage {
     _id: string;
@@ -9,12 +10,20 @@ export interface ResMessage {
     senderName: string;
     senderId: string; // hashed uuid;
     contentType: CONTENT_TYPE_ENUM;
-    direction: "outgoing" | "inbound";
+    direction: "outgoing" | "inbound" | "alarm";
     content: string;
     data?: string;
     url?: string;
     createdAt: Date;
     updatedAt: Date;
+}
+
+/**
+ * When user connected with chat server (when enterted chat page)
+ */
+interface ReqConnect {} // No request
+export interface ResConnect {
+    id: string; // Chat user id (ObjectId of ChatUser schema in MongoDB)
 }
 
 /**
@@ -89,5 +98,7 @@ interface StringfiedBuffer {
     data: number[];
 }
 
-// TODO
-export interface ResRefreshChatRoom {}
+export interface ResRefreshChatRoom {
+    chatRooms: ResChatRoom[];
+    requests: ResRequest[];
+}

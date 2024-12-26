@@ -11,11 +11,10 @@ export type SearchSchoolAPISpec = Tspec.DefineApiSpec<{
             get: {
                 summary: "Get recommended student list";
                 description: "Get Recommend student list by request_id";
-                query: ReqSearchSchool["query"];
                 responses: {
                     200: ResSearchSchool;
                 };
-                handler: RequestHandler<undefined, ResSearchSchool, undefined, ReqSearchSchool["query"]>;
+                handler: RequestHandler<undefined, ResSearchSchool, undefined, ReqSearchSchool>;
             };
         };
     };

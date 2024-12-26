@@ -11,6 +11,7 @@ type ParticipantType = {
 
 export interface ResChatRoom {
     title: string;
+    requestId: number;
     chatRoomId: string;
     consumer: ParticipantType;
     participants: ParticipantType[];
@@ -18,4 +19,10 @@ export interface ResChatRoom {
     lastSenderId: HashedUserIdStr;
     lastMessage: string;
     lastSentTime: Date;
+}
+
+export interface ResRequest {
+    requestId: number;
+    title: string;
+    image: string;
 }

@@ -15,6 +15,11 @@ interface TextContent {
     content: string;
 }
 
+interface AlarmContent {
+    contentType: "alarm";
+    content: string;
+}
+
 interface ImageContent {
     contentType: "image";
     url: string;
@@ -30,15 +35,11 @@ interface FileContent {
 interface MapContent {
     contentType: "map";
     content: {
-        'lat': number,
-        'lng': number,
+        lat: number;
+        lng: number;
     };
 }
 
-export type MessageContentType =
-    | TextContent
-    | FileContent
-    | MapContent
-    | ImageContent;
+export type MessageContentType = TextContent | FileContent | MapContent | ImageContent | AlarmContent;
 
 export type MessageContent = MessageContentType & ChatMessageBase;
