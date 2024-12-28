@@ -1,4 +1,6 @@
 import { REQUEST_STATUS_ENUM } from "../../enum/service/Request";
+import { SCHOOL_STATUS_ENUM } from "../../enum/service/Student";
+import { USER_GENDER_ENUM } from "../../enum/service/User";
 import { RequestCard } from "./Request";
 export interface AcademicHistoryData {
     school_id: number;
@@ -7,7 +9,7 @@ export interface AcademicHistoryData {
     school_name: string;
     start_date: string;
     end_date: string;
-    status: 0 | 1 | 2; // 졸업 | 재학 | 휴학
+    status: SCHOOL_STATUS_ENUM;
     logo?: string;
 }
 
@@ -19,32 +21,28 @@ export interface LanguageData {
 export interface StudentProfileData {
     name_glb: object;
     nationality: string;
-    birth_date: Date;
+    birth_date: string;
     phone_number: string;
     emergency_contact: string;
     email_verified?: Date;
-    gender: 0 | 1; // 남 | 여
+    gender: USER_GENDER_ENUM;
     image: string;
     has_car: 0 | 1;
     keyword_list: string[];
     academic_history: AcademicHistoryData[];
-    exam_history: LanguageData[];
+    exam_history?: LanguageData[];
 }
 
 export interface StudentReviewData {
-    request: RequestCard;
+    request_id: number;
     commu_ability: number;
     consumer_id: number;
     corp_id: number | null;
     goal_fulfillment: number;
-    id: number;
     lang_fluent: number;
     need_improve: string;
     orgn_id: number | null;
     praise: string;
-    request_id: number;
-    request_url: string;
-    student_id: number;
     want_cowork: number;
     was_diligent: number;
     was_late: number;
@@ -68,9 +66,9 @@ export interface ReqCreateStudentProfile {
     phone_number: string;
     emergency_contact: string;
     email_verified?: Date;
-    gender: 0 | 1; // 남 | 여
+    gender: USER_GENDER_ENUM;
     image: string;
-    has_car?: 0 | 1;
+    has_car: 0 | 1;
     keyword_list?: string[];
     academic_history: AcademicHistoryData[];
     exam_history: LanguageData[];
