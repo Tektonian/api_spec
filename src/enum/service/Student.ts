@@ -1,4 +1,15 @@
 /**
+ * School Degree type
+ */
+
+export const SCHOOL_DEGREE_ENUM = {
+    BACHELOR: 0,
+    MASTER: 1,
+    DOCTOR: 2,
+};
+
+export type SCHOOL_DEGREE_ENUM = (typeof SCHOOL_DEGREE_ENUM)[keyof typeof SCHOOL_DEGREE_ENUM];
+/**
  * School status type
  */
 export const SCHOOL_STATUS_ENUM = {

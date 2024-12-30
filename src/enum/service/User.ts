@@ -17,7 +17,6 @@ export const USER_ROLE_ENUM = {
 export const USER_GENDER_ENUM = {
     MALE: 0,
     FEMALE: 1,
-    ELSE: 2,
 } as const;
 
 export type USER_ROLE_ENUM = (typeof USER_ROLE_ENUM)[keyof typeof USER_ROLE_ENUM];

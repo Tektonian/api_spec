@@ -10,9 +10,9 @@ export type StudentAPISpec = Tspec.DefineApiSpec<{
             get: {
                 summary: "Get student profile";
                 description: "Get student profile";
-                cookie: {
-                    auth: "Logined" | "not logedin";
-                    role: "corp || orgn 유저의 경우 리뷰 획득";
+                header: {
+                    session: "'normal' | 'corp' | 'orgm' ";
+                    explain: "corp || orgn 유저의 경우 리뷰 획득";
                 };
                 handler: RequestHandler<ReqGetStudentProfile, ResGetStudentProfile>;
             };

@@ -1,11 +1,15 @@
-import { REQUEST_STATUS_ENUM } from "../../enum/service/Request";
+import "joi-extract-type";
+import * as Joi from "@hapi/joi";
 import { SCHOOL_STATUS_ENUM } from "../../enum/service/Student";
 import { USER_GENDER_ENUM } from "../../enum/service/User";
-import { RequestCard } from "./Request";
+import { COUNTRY_CODE_ENUM } from "../../global/CountryCode";
+import { ReqCreateStudentProfileSchema } from "../../joi/service/Student";
+
 export interface AcademicHistoryData {
     school_id: number;
     degree: string;
     faculty: string;
+    /** TODO: school_name -> school_name_glb */
     school_name: string;
     start_date: string;
     end_date: string;
@@ -14,72 +18,51 @@ export interface AcademicHistoryData {
 }
 
 export interface LanguageData {
-    exam_id: number;
-    exam_result: { class: string; level: number };
+    level: number;
+    exam_result: string;
+    /** 시험 명칭 */
+    exam_name_glb: {
+        [country_code in COUNTRY_CODE_ENUM]: string;
+    };
+    /** 어떠한 언어를 대상으로 하는 시험인지 */
+    language: string;
 }
 
-export interface StudentProfileData {
-    name_glb: object;
-    nationality: string;
+interface StudentCardData {
+    student_id: number;
+    name_glb: {
+        [country_code in COUNTRY_CODE_ENUM]: string;
+    };
+    nationality: COUNTRY_CODE_ENUM;
+    academic_history: AcademicHistoryData[];
+    major: string;
+    exam_history?: LanguageData[];
+    image?: string;
+}
+
+interface StudentOpenData extends StudentCardData {
     birth_date: string;
-    phone_number: string;
-    emergency_contact: string;
-    email_verified?: Date;
     gender: USER_GENDER_ENUM;
-    image: string;
     has_car: 0 | 1;
     keyword_list: string[];
-    academic_history: AcademicHistoryData[];
-    exam_history?: LanguageData[];
 }
 
-export interface StudentReviewData {
-    request_id: number;
-    commu_ability: number;
-    consumer_id: number;
-    corp_id: number | null;
-    goal_fulfillment: number;
-    lang_fluent: number;
-    need_improve: string;
-    orgn_id: number | null;
-    praise: string;
-    want_cowork: number;
-    was_diligent: number;
-    was_late: number;
-    was_proactive: number;
+interface StudentPrivateData {
+    phone_number: string;
+    emergency_contact: string;
+}
+
+interface StudentProfileData<includePrivate extends boolean> {
+    profile: StudentOpenData;
+    contact: includePrivate extends true ? undefined : StudentPrivateData;
 }
 
 export interface ReqGetStudentProfile {
     student_id: number;
 }
 
-export interface ResGetStudentProfile {
-    profile: StudentProfileData;
-    requests: RequestCard[];
-    reviews: StudentReviewData[];
-}
+export interface ResGetStudentProfile extends StudentProfileData<boolean> {}
 
-export interface ReqCreateStudentProfile {
-    name_glb: object;
-    nationality: string;
-    bith_date: Date;
-    phone_number: string;
-    emergency_contact: string;
-    email_verified?: Date;
-    gender: USER_GENDER_ENUM;
-    image: string;
-    has_car: 0 | 1;
-    keyword_list?: string[];
-    academic_history: AcademicHistoryData[];
-    exam_history: LanguageData[];
-}
+export interface ReqCreateStudentProfile extends Joi.extractType<typeof ReqCreateStudentProfileSchema> {}
 
 export interface ResCreateStudentProfile {}
-
-// Model attributes
-export interface ReqCreateStudentReview {}
-
-export interface ResCreateStudentReview {
-    status: string;
-    review: StudentReviewData;
-}
