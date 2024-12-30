@@ -4,7 +4,7 @@ import { ReqCreateRequestSchema } from "../../joi/service/Request";
 import type { REQUEST_STATUS_ENUM } from "../../enum/service/Request";
 import type { USER_ROLE_ENUM } from "../../enum/service/User";
 
-interface RequestCard {
+export interface RequestCard {
     request_id: number;
     title: string;
     reward_price: number;
@@ -91,7 +91,7 @@ export interface ReqAllRequestCard {
     corp_id?: number;
     orgn_id?: number;
 }
-export interface ResGetAllRequest {
+export interface ResAllRequestCard {
     requests: RequestCard[];
 }
 

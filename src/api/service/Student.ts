@@ -1,4 +1,5 @@
 import { ReqGetStudentProfile, ResGetStudentProfile } from "../../types/service/Student";
+import { ResAllRequestCard } from "../../types/service/Request";
 import { RequestHandler } from "express";
 import { Tspec } from "tspec";
 
@@ -12,7 +13,6 @@ export type StudentAPISpec = Tspec.DefineApiSpec<{
                 description: "Get student profile";
                 header: {
                     session: "'normal' | 'corp' | 'orgm' ";
-                    explain: "corp || orgn 유저의 경우 리뷰 획득";
                 };
                 handler: RequestHandler<ReqGetStudentProfile, ResGetStudentProfile>;
             };

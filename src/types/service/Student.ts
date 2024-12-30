@@ -28,7 +28,7 @@ export interface LanguageData {
     language: string;
 }
 
-interface StudentCardData {
+export interface StudentCardData {
     student_id: number;
     name_glb: {
         [country_code in COUNTRY_CODE_ENUM]: string;

@@ -3,6 +3,7 @@ import { RequestHandler } from "express";
 
 import { ReqCreateCorpProfile, ResCreateCorpProfile } from "../../types/service/Corporation";
 import { ReqGetCorpProfile, ResGetCorpProfile } from "../../types/service/Corporation";
+
 export type CorporationAPISpec = Tspec.DefineApiSpec<{
     tags: ["Corporation"];
     basePath: "/api/corporations";
@@ -19,6 +20,11 @@ export type CorporationAPISpec = Tspec.DefineApiSpec<{
                 summary: "Get Corporation information";
                 description: "";
                 handler: RequestHandler<ReqGetCorpProfile, ResGetCorpProfile>;
+                responses: {
+                    200: ResGetCorpProfile;
+                    /** Server failed */
+                    500: undefined;
+                };
             };
         };
     };
