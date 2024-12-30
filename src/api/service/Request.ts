@@ -37,9 +37,9 @@ export type RequestAPISpec = Tspec.DefineApiSpec<{
                 Usually used by Student | Corp | Orgn profile pages`;
                 header: {
                     /** Pertmitted session user only
-                     * @see {@link Request.ts } - Read Link for more information
+                     * @see {@link types/service/Request.ts } - Read Link for more information
                      */
-                    session: "normal" | "corp" | "orgn";
+                    session: "normal" | "corp" | "orgn" | "student";
                 };
                 handler: RequestHandler<undefined, ResAllRequestCard, ReqAllRequestCard>;
                 responses: {

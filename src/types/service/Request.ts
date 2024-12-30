@@ -1,5 +1,6 @@
 import "joi-extract-type";
 import * as Joi from "@hapi/joi";
+import { ReqAllRequestCardSchema } from "../../joi/service/Request";
 import { ReqCreateRequestSchema } from "../../joi/service/Request";
 import type { REQUEST_STATUS_ENUM } from "../../enum/service/Request";
 import type { USER_ROLE_ENUM } from "../../enum/service/User";
@@ -84,13 +85,10 @@ export interface ResGetRequest extends RequestData {}
  * | -------------- | ------------------------------- | ------------------------------- |
  * | normal | 회사 프로필 정보 | x |
  * | 기업 또는 정부 | 회사 프로필 정보 & RequestCard<orgn | corp, POSTED | FINISHED> | x |
- * | 학생 | 회사 프로필 정보 & RequestCard<orgn | corp, FINISHED> | 기업 또는 정부에 대해서 학생이 남긴 리뷰 |
+ * | 학생 | 회사 프로필 정보 & RequestCard<orgn | corp, POSTED | FINISHED> | 기업 또는 정부에 대해서 학생이 남긴 리뷰 |
  */
-export interface ReqAllRequestCard {
-    student_id?: number;
-    corp_id?: number;
-    orgn_id?: number;
-}
+export interface ReqAllRequestCard extends Joi.extractType<typeof ReqAllRequestCardSchema> {}
+
 export interface ResAllRequestCard {
     requests: RequestCard[];
 }

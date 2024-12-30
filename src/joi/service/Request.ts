@@ -1,6 +1,7 @@
 import Joi from "@hapi/joi";
 import parse from "joi-to-json";
 import { COUNTRY_CODE_ENUM } from "../../global/CountryCode";
+
 export const ReqCreateRequestSchema = Joi.object({
     title: Joi.string().required(),
     reward_price: Joi.number().min(1).required(),
@@ -31,4 +32,14 @@ export const ReqCreateRequestSchema = Joi.object({
     end_time: Joi.date().iso(),
 });
 
+export const ReqAllRequestCardSchema = Joi.object({
+    student_id: Joi.number().positive(),
+    corp_id: Joi.number().positive(),
+    orgn_id: Joi.number().positive(),
+})
+    .keys()
+    .oxor("student_id", "corp_id", "orgn_id")
+    .description("only one field is allowed but none are required");
+
+export const ReqAllRequestCardSchemaJSON = parse(ReqAllRequestCardSchema);
 export const ReqCreateRequestSchemaJSON = parse(ReqCreateRequestSchema);
