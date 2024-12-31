@@ -12,7 +12,7 @@ export type StudentAPISpec = Tspec.DefineApiSpec<{
                 summary: "Get student profile";
                 description: "Get student profile";
                 header: {
-                    session: "'normal' | 'corp' | 'orgm' ";
+                    session: "'normal' | 'corp' | 'orgn' ";
                 };
                 handler: RequestHandler<ReqGetStudentProfile, ResGetStudentProfile<boolean>>;
             };
