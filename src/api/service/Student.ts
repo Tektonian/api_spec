@@ -14,7 +14,7 @@ export type StudentAPISpec = Tspec.DefineApiSpec<{
                 header: {
                     session: "'normal' | 'corp' | 'orgm' ";
                 };
-                handler: RequestHandler<ReqGetStudentProfile, ResGetStudentProfile>;
+                handler: RequestHandler<ReqGetStudentProfile, ResGetStudentProfile<boolean>>;
             };
         };
     };

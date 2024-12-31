@@ -22,7 +22,7 @@ export interface LanguageData {
     exam_result: string;
     /** 시험 명칭 */
     exam_name_glb: {
-        [country_code in COUNTRY_CODE_ENUM]: string;
+        [country_code in COUNTRY_CODE_ENUM]?: string;
     };
     /** 어떠한 언어를 대상으로 하는 시험인지 */
     language: string;
@@ -31,7 +31,7 @@ export interface LanguageData {
 export interface StudentCardData {
     student_id: number;
     name_glb: {
-        [country_code in COUNTRY_CODE_ENUM]: string;
+        [country_code in COUNTRY_CODE_ENUM]?: string;
     };
     nationality: COUNTRY_CODE_ENUM;
     academic_history: AcademicHistoryData[];
@@ -61,7 +61,7 @@ export interface ReqGetStudentProfile {
     student_id: number;
 }
 
-export interface ResGetStudentProfile extends StudentProfileData<boolean> {}
+export interface ResGetStudentProfile<includePrivate extends boolean> extends StudentProfileData<includePrivate> {}
 
 export interface ReqCreateStudentProfile extends Joi.extractType<typeof ReqCreateStudentProfileSchema> {}
 
