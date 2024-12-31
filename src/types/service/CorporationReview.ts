@@ -6,8 +6,8 @@ interface CorpReview {
     request_id: number;
     review_text: string;
     prep_requirement: string;
+    work_atmosphere: string;
     sense_of_achive: number;
-    work_atmostphere: number;
 }
 
 interface StudentReviewProvider {
