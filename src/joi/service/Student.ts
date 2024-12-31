@@ -34,7 +34,7 @@ export const ReqCreateStudentProfileSchema = Joi.object({
     gender: Joi.number().required().allow(0, 1).description("0: Male, 1: Female"),
     has_car: Joi.number().required().allow(0, 1),
     keyword_list: Joi.array()
-        .items(Joi.string().required, Joi.string().required, Joi.string().required)
+        .items(Joi.string().required(), Joi.string().required(), Joi.string().required())
         .description("3 Keywords that Express Student"),
     phone_number: Joi.string().required().description("Is not Exposed to Others"),
     emergency_contact: Joi.string().required().description("Is not Exposed to Others"),
