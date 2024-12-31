@@ -26,16 +26,16 @@ interface RequestData extends RequestCard {
     orgn_id?: number;
     head_count: number;
     content: string;
-    are_needed?: object;
-    are_required?: object;
+    are_needed?: string[];
+    are_required?: string[];
     end_date?: string;
     address_coordinate?: {
-        type: "Point";
-        coordinates: [lat: number, lng: number];
+        lat: number;
+        lng: number;
     };
     provide_food: boolean;
     provide_trans_exp: boolean;
-    prep_material?: object;
+    prep_material?: string[];
     start_time: string;
     end_time: string;
     created_at?: Date;
