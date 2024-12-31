@@ -19,7 +19,7 @@ export type CorporationAPISpec = Tspec.DefineApiSpec<{
             get: {
                 summary: "Get Corporation information";
                 description: "";
-                handler: RequestHandler<ReqGetCorpProfile, ResGetCorpProfile>;
+                handler: RequestHandler<ReqGetCorpProfile, ResGetCorpProfile, undefined>;
                 responses: {
                     200: ResGetCorpProfile;
                     /** Server failed */
