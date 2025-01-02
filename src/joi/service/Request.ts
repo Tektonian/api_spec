@@ -1,6 +1,6 @@
 import Joi from "@hapi/joi";
 import parse from "joi-to-json";
-import { COUNTRY_CODE_ENUM } from "../../global/CountryCode";
+import { COUNTRY_CODE_ENUM } from "../../enum/service/CountryCode";
 import { CONSUMER_ENUM } from "../../enum/service/Consumer";
 
 export const ReqCreateRequestSchema = Joi.object({

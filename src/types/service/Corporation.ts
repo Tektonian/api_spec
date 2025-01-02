@@ -1,7 +1,7 @@
 import "joi-extract-type";
 import * as Joi from "@hapi/joi";
 import { ReqCreateCorpProfileSchema } from "../../joi/service/Corporation";
-import { COUNTRY_CODE_ENUM } from "../../global/CountryCode";
+import { COUNTRY_CODE_ENUM } from "../../enum/service/CountryCode";
 
 export interface ReqCreateCorpProfile extends Joi.extractType<typeof ReqCreateCorpProfileSchema> {}
 

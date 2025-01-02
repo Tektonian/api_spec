@@ -1,7 +1,7 @@
 import Joi from "@hapi/joi";
 import parse from "joi-to-json";
 import { SCHOOL_STATUS_ENUM, SCHOOL_DEGREE_ENUM } from "../../enum/service/Student";
-import { COUNTRY_CODE_ENUM } from "../../global/CountryCode";
+import { COUNTRY_CODE_ENUM } from "../../enum/service/CountryCode";
 
 const AcademicHistoryData = Joi.object({
     school_id: Joi.number().positive().required(),

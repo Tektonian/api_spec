@@ -2,7 +2,7 @@ import "joi-extract-type";
 import * as Joi from "@hapi/joi";
 import { SCHOOL_STATUS_ENUM } from "../../enum/service/Student";
 import { USER_GENDER_ENUM } from "../../enum/service/User";
-import { COUNTRY_CODE_ENUM } from "../../global/CountryCode";
+import { COUNTRY_CODE_ENUM } from "../../enum/service/CountryCode";
 import { ReqCreateStudentProfileSchema } from "../../joi/service/Student";
 
 export interface AcademicHistoryData {
