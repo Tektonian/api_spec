@@ -3,8 +3,8 @@ import { RequestHandler } from "express";
 
 import { ReqCreateUserData, ReqGetUserData, ResCreateUserData, ResGetUserData } from "../../types/service/User";
 
-export type StudentReviewAPISpec = Tspec.DefineApiSpec<{
-    tags: ["Student review"];
+export type UserAPISpec = Tspec.DefineApiSpec<{
+    tags: ["User Information"];
     basePath: "/api/users";
     paths: {
         "/": {
