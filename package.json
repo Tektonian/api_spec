@@ -4,7 +4,8 @@
     "description": "API spec definition",
     "type": "module",
     "files": [
-        "dist"
+        "dist",
+        "*.d.ts"
     ],
     "exports": {
         ".": {
@@ -28,8 +29,10 @@
     },
     "scripts": {
         "server": "npx tspec generate --specPathGlobs \"src/**/*.ts\" && npx tspec server --specPathGlobs \"src/**/*.ts\"",
+        "doc": "npx tspec generate --specPathGlobs \"src/**/*.ts\"",
         "test": "echo \"Error: no test specified\" && exit 1",
-        "build": "npx rollup -c"
+        "build": "npx rollup -c && bash scripts/postbuild.sh",
+        "pack": "npm pack && bash scripts/postpack.sh"
     },
     "author": "",
     "license": "ISC",
@@ -60,6 +63,7 @@
         "typescript": "^5.7.2"
     },
     "dependencies": {
+        "api_spec": "file:api_spec-1.0.0.tgz",
         "joi-to-json": "^4.3.0",
         "tspec": "file:../tspec-with-joi-to-json/packages/tspec/tspec-0.1.116.tgz"
     }
