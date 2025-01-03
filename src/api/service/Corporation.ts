@@ -13,6 +13,13 @@ export type CorporationAPISpec = Tspec.DefineApiSpec<{
                 summary: "Create Corporation";
                 description: "";
                 handler: RequestHandler<undefined, ResCreateCorpProfile, ReqCreateCorpProfile>;
+                responses: {
+                    200: ResCreateCorpProfile;
+                    /** When user sent wrong data */
+                    400: undefined;
+                    /** When server failed to create profile */
+                    500: undefined;
+                };
             };
         };
         "/:corp_id": {
