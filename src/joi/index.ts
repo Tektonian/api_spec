@@ -5,3 +5,4 @@ export * as CorporationSchema from "./service/Corporation";
 export * as CorporationReviewSchema from "./service/CorporationReview";
 export * as StudentSchema from "./service/Student";
 export * as StudentReviewSchema from "./service/StudentReview";
+export * as UserReviewSchema from "./service/User";

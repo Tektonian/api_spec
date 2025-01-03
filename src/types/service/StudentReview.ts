@@ -8,7 +8,9 @@ export interface ReqCreateStudentReveiw extends Joi.extractType<typeof ReqCreate
 
 export interface ResCreateStudentReview {}
 
-export interface ReqGetStudentReviews {}
+export interface ReqGetStudentReviews {
+    student_id: number;
+}
 
 export interface StudentReviewData {
     consumer_id: number;
