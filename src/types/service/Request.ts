@@ -43,11 +43,7 @@ interface RequestData extends RequestCard {
 }
 
 // Model attribute
-export interface ReqCreateRequest {
-    /** 유저가 다양한 Consumer Identity 보유 시, 어떤 role로써 작성했는지 나타내기 위해 필요 */
-    role: Exclude<USER_ROLE_ENUM, "student" | "">;
-    data?: Joi.extractType<typeof ReqCreateRequestSchema>;
-}
+export interface ReqCreateRequest extends Joi.extractType<typeof ReqCreateRequestSchema> {}
 
 export interface ResCreateRequest {
     request_id: number;
