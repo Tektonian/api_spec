@@ -28,14 +28,18 @@ export const ReqCreateRequestSchema = Joi.object({
         are_needed: Joi.array().items(Joi.string()),
         are_required: Joi.array().items(Joi.string()),
         prep_material: Joi.array().items(Joi.string()),
-        start_time: Joi.date()
-            .iso()
-            .description("의뢰 수행이 시작되는 시간 - 필요 시간이 없는 경우에는 의무사항 아님 (e.g. 번역)"),
-        end_time: Joi.date().iso(),
+        start_time: Joi.string()
+            .regex(/^(?:(?:([01]?\d|2[0-3]):)?([0-5]?\d):)?([0-5]?\d)$/)
+            .required()
+            .description(
+                "Type: HH:MM:SS / 의뢰 수행이 시작되는 시간 - 필요 시간이 없는 경우에는 의무사항 아님 (e.g. 번역)",
+            ),
+        end_time: Joi.string().regex(/^(?:(?:([01]?\d|2[0-3]):)?([0-5]?\d):)?([0-5]?\d)$/),
     }),
     role: Joi.string()
         .required()
-        .valid([...Object.values(CONSUMER_ENUM)]),
+        .valid([...Object.values(CONSUMER_ENUM)])
+        .description("유저가 다양한 Consumer Identity 보유 시, 어떤 role로써 작성했는지 나타내기 위해 필요"),
 });
 
 export const ReqAllRequestCardSchema = Joi.object({

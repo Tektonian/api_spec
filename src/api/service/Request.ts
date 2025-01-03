@@ -30,21 +30,77 @@ export type RequestAPISpec = Tspec.DefineApiSpec<{
                 };
             };
         };
-        "/list": {
+        "/list/mypage": {
+            get: {
+                summary: "Get all request card of mine";
+                description: `Get all request card information available`;
+                header: {
+                    /** Pertmitted session user only
+                     * @see {@link types/service/Request.ts } - Read Link for more information
+                     */
+                    session: "normal";
+                };
+                handler: RequestHandler<undefined, ResAllRequestCard, undefined>;
+                responses: {
+                    /** Success */
+                    200: ResAllRequestCard;
+                    /** Failed to get request */
+                    500: undefined;
+                };
+            };
+        };
+        "/list/student": {
             post: {
-                summary: "Get all request card information available";
-                description: `Get all request card information available.
-                Usually used by Student | Corp | Orgn profile pages`;
+                summary: "Get all request card about student";
+                description: `Get all request card information available`;
                 header: {
                     /** Pertmitted session user only
                      * @see {@link types/service/Request.ts } - Read Link for more information
                      */
                     session: "normal" | "corp" | "orgn" | "student";
                 };
-                handler: RequestHandler<undefined, ResAllRequestCard, ReqAllRequestCard>;
+                handler: RequestHandler<undefined, ResAllRequestCard, Pick<ReqAllRequestCard, "student_id">>;
                 responses: {
                     /** Success */
-                    200: ReqAllRequestCard;
+                    200: ResAllRequestCard;
+                    /** Failed to get request */
+                    500: undefined;
+                };
+            };
+        };
+        "/list/corp": {
+            post: {
+                summary: "Get all request card about corporation";
+                description: `Get all request card information available`;
+                header: {
+                    /** Pertmitted session user only
+                     * @see {@link types/service/Request.ts } - Read Link for more information
+                     */
+                    session: "corp" | "orgn" | "student";
+                };
+                handler: RequestHandler<undefined, ResAllRequestCard, Pick<ReqAllRequestCard, "corp_id">>;
+                responses: {
+                    /** Success */
+                    200: ResAllRequestCard;
+                    /** Failed to get request */
+                    500: undefined;
+                };
+            };
+        };
+        "/list/orgn": {
+            post: {
+                summary: "Get all request card about orgn";
+                description: `Get all request card information available`;
+                header: {
+                    /** Pertmitted session user only
+                     * @see {@link types/service/Request.ts } - Read Link for more information
+                     */
+                    session: "corp" | "orgn" | "student";
+                };
+                handler: RequestHandler<undefined, ResAllRequestCard, Pick<ReqAllRequestCard, "orgn_id">>;
+                responses: {
+                    /** Success */
+                    200: ResAllRequestCard;
                     /** Failed to get request */
                     500: undefined;
                 };
