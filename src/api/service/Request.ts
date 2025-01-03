@@ -31,7 +31,7 @@ export type RequestAPISpec = Tspec.DefineApiSpec<{
             };
         };
         "/list": {
-            get: {
+            post: {
                 summary: "Get all request card information available";
                 description: `Get all request card information available.
                 Usually used by Student | Corp | Orgn profile pages`;
