@@ -7,3 +7,4 @@ export type { VerificationAPISpec } from "./service/Verification";
 export type { SearchSchoolAPISpec } from "./search/School";
 export type { SearchExamAPISpec } from "./search/Exam";
 export type { CorporationAPISpec } from "./service/Corporation";
+export type { CorporationReviewAPISpec } from "./service/CorporationReview";

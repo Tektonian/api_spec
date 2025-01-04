@@ -16,6 +16,10 @@ export type CorporationReviewAPISpec = Tspec.DefineApiSpec<{
             post: {
                 summary: "Create Corporation Review";
                 description: "";
+                header: {
+                    /** Only student can create corporation reviews */
+                    session: "student";
+                };
                 handler: RequestHandler<undefined, ResCreateCorpReview, ReqCreateCorpReview>;
                 responses: {
                     200: ResCreateCorpReview;
@@ -30,6 +34,10 @@ export type CorporationReviewAPISpec = Tspec.DefineApiSpec<{
             get: {
                 summary: "Get Corporation Review";
                 description: "";
+                header: {
+                    /** Only student can see corporation reviews */
+                    session: "student";
+                };
                 handler: RequestHandler<ReqGetCorpReview, ResGetCorpReview, undefined>;
                 responses: {
                     200: ResGetCorpReview;
