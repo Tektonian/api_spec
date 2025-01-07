@@ -48,20 +48,17 @@ interface StudentOpenData extends StudentCardData {
 }
 
 interface StudentPrivateData {
-    phone_number: string;
-    emergency_contact: string;
+    phone_number?: string;
+    emergency_contact?: string;
 }
 
-interface StudentProfileData<includePrivate extends boolean> {
-    profile: StudentOpenData;
-    contact: includePrivate extends true ? undefined : StudentPrivateData;
-}
+interface StudentProfileData extends StudentOpenData, StudentPrivateData {}
 
 export interface ReqGetStudentProfile {
     student_id: number;
 }
 
-export interface ResGetStudentProfile<includePrivate extends boolean> extends StudentProfileData<includePrivate> {}
+export interface ResGetStudentProfile extends StudentProfileData {}
 
 export interface ReqCreateStudentProfile extends Joi.extractType<typeof ReqCreateStudentProfileSchema> {}
 export interface ResCreateStudentProfile {}

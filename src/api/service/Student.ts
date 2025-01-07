@@ -14,7 +14,7 @@ export type StudentAPISpec = Tspec.DefineApiSpec<{
                 header: {
                     session: "'normal' | 'corp' | 'orgn' ";
                 };
-                handler: RequestHandler<ReqGetStudentProfile, ResGetStudentProfile<boolean>>;
+                handler: RequestHandler<ReqGetStudentProfile, ResGetStudentProfile>;
             };
         };
         "/update": {
@@ -25,7 +25,7 @@ export type StudentAPISpec = Tspec.DefineApiSpec<{
                     /** Only students can update their own profile */
                     session: "'student'";
                 };
-                handler: RequestHandler<ReqUpdateStudentProfile, ResUpdateStudentProfile>;
+                handler: RequestHandler<undefined, ResUpdateStudentProfile, ReqUpdateStudentProfile>;
             };
         };
     };
