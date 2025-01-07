@@ -5,7 +5,8 @@
     "type": "module",
     "files": [
         "dist",
-        "*.d.ts"
+        "*.d.ts",
+        "openapi.json"
     ],
     "exports": {
         ".": {
@@ -38,7 +39,8 @@
     "license": "ISC",
     "peerDependencies": {
         "joi": "^17.13.3",
-        "joi-extract-type": "^15.0.8"
+        "joi-extract-type": "^15.0.8",
+        "joi-to-json": "^4.3.0"
     },
     "devDependencies": {
         "@babel/cli": "^7.26.4",
@@ -63,8 +65,6 @@
         "typescript": "^5.7.2"
     },
     "dependencies": {
-        "api_spec": "file:api_spec-1.0.0.tgz",
-        "joi-to-json": "^4.3.0",
         "tspec": "file:../tspec-with-joi-to-json/packages/tspec/tspec-0.1.116.tgz"
     }
 }

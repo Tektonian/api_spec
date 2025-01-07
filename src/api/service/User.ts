@@ -1,7 +1,9 @@
 import { Tspec } from "tspec";
 import { RequestHandler } from "express";
 
-import { ReqCreateUserData, ReqGetUserData, ResCreateUserData, ResGetUserData } from "../../types/service/User";
+import { ReqGetUserData, ResGetUserData } from "../../types/service/User";
+import { ReqMyPage, ResMyPage } from "../../types/service/User";
+import { ReqUpdateUserProfile, ResUpdateUserProfile } from "../../types/service/User";
 
 export type UserAPISpec = Tspec.DefineApiSpec<{
     tags: ["User Information"];
@@ -17,16 +19,34 @@ export type UserAPISpec = Tspec.DefineApiSpec<{
                 handler: RequestHandler<ReqGetUserData, ResGetUserData>;
             };
         };
-        "/post": {
-            post: {
-                summary: "Create User Data";
-                description: "";
-                handler: RequestHandler<undefined, ResCreateUserData, ReqCreateUserData>;
+        "/mypage": {
+            get: {
+                summary: "Get mypage data";
+                description: "Get mypage data";
+                header: {
+                    session: "normal";
+                };
+                handler: RequestHandler<ReqMyPage, ResMyPage>;
                 responses: {
-                    /** Success */
-                    200: ReqCreateUserData;
-                    /** Failed to get request */
-                    500: undefined;
+                    200: ResMyPage;
+                    /** Failed to get mypage data */
+                    400: undefined;
+                };
+            };
+        };
+        "/update": {
+            post: {
+                summary: "Update user profile";
+                description: "Update user profile";
+                header: {
+                    session: "normal";
+                };
+                handler: RequestHandler<undefined, ResUpdateUserProfile, ReqUpdateUserProfile>;
+                responses: {
+                    /** Successfully updated user profile */
+                    200: ResUpdateUserProfile;
+                    /** Failed to update user profile */
+                    400: undefined;
                 };
             };
         };

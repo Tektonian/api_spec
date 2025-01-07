@@ -1,5 +1,5 @@
-import { ReqGetStudentProfile, ResGetStudentProfile } from "../../types/service/Student";
-import { ResAllRequestCard } from "../../types/service/Request";
+import { ReqGetStudentProfile, ReqUpdateStudentProfile } from "../../types/service/Student";
+import { ResGetStudentProfile, ResUpdateStudentProfile } from "../../types/service/Student";
 import { RequestHandler } from "express";
 import { Tspec } from "tspec";
 
@@ -15,6 +15,17 @@ export type StudentAPISpec = Tspec.DefineApiSpec<{
                     session: "'normal' | 'corp' | 'orgn' ";
                 };
                 handler: RequestHandler<ReqGetStudentProfile, ResGetStudentProfile<boolean>>;
+            };
+        };
+        "/update": {
+            post: {
+                summary: "Update student profile";
+                description: "Update stuent profile";
+                header: {
+                    /** Only students can update their own profile */
+                    session: "'student'";
+                };
+                handler: RequestHandler<ReqUpdateStudentProfile, ResUpdateStudentProfile>;
             };
         };
     };

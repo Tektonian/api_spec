@@ -64,5 +64,7 @@ export interface ReqGetStudentProfile {
 export interface ResGetStudentProfile<includePrivate extends boolean> extends StudentProfileData<includePrivate> {}
 
 export interface ReqCreateStudentProfile extends Joi.extractType<typeof ReqCreateStudentProfileSchema> {}
-
 export interface ResCreateStudentProfile {}
+
+export interface ReqUpdateStudentProfile extends ReqCreateStudentProfile {}
+export interface ResUpdateStudentProfile extends ReqCreateStudentProfile {}

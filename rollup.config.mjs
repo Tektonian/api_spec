@@ -3,7 +3,7 @@ import { dts } from "rollup-plugin-dts";
 import peerDepsExternal from "rollup-plugin-peer-deps-external";
 import resolve from "@rollup/plugin-commonjs";
 
-const External = ["@hapi/joi", "joi-to-json"];
+const External = ["@hapi/joi, joi-to-json"];
 
 export default [
     {

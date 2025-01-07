@@ -9,7 +9,7 @@ export const ReqCreateRequestSchema = Joi.object({
         reward_price: Joi.number().min(1).required(),
         currency: Joi.string()
             .required()
-            .valid(...[Object.values(COUNTRY_CODE_ENUM)])
+            .valid(Object.values(COUNTRY_CODE_ENUM))
             .description("국가 코드 - 화폐 단위로 변경하는 데이터 후처리 필요"),
         address: Joi.string(),
         head_count: Joi.number().required().min(1),

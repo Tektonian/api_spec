@@ -8,7 +8,7 @@ const AcademicHistoryData = Joi.object({
     degree: Joi.number().required().allow(Object.values(SCHOOL_DEGREE_ENUM)).description("Bachelor | Master | Doctor"),
     faculty: Joi.string().required(),
     status: Joi.number()
-        .allow(Object.values(SCHOOL_STATUS_ENUM))
+        .valid(Object.values(SCHOOL_STATUS_ENUM))
         .description("In Progress | Graduated | Leave of Absence"),
     start_date: Joi.date().iso().required(),
     end_date: Joi.date().iso().required().description("Graduated Date Or Expecting Graduation Date"),
