@@ -1,5 +1,5 @@
 import { Tspec } from "tspec";
-
+import { RequestEnum } from "../../enum";
 type HashedUserIdStr = string; // Stringfied Hash
 
 type ParticipantType = {
@@ -25,4 +25,6 @@ export interface ResRequest {
     requestId: number;
     title: string;
     image: string;
+    requestStatus: RequestEnum.REQUEST_STATUS_ENUM;
+    selected: string[];
 }

@@ -5,7 +5,7 @@ interface ChatMessageBase {
     seq: number;
     senderId: HashedUserIdStr;
     unreadCount: number;
-    direction: "outgoing" | "inbound";
+    direction: "outgoing" | "inbound" | "alarm";
     createdAt?: Date;
     updatedAt?: Date;
 }

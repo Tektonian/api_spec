@@ -1,16 +1,17 @@
 import "joi-extract-type";
 import * as Joi from "@hapi/joi";
-import { COUNTRY_CODE_ENUM } from "../../enum/service/CountryCode";
 import { ResGetStudentProfile } from "./Student";
 import { RequestCard } from "./Request";
 import { ResGetCorpProfile } from "./Corporation";
-import { ReqCreateUserSchema } from "../../joi/service/User";
+import { UserSchema } from "../../joi/service/User";
+import { COUNTRY_CODE_ENUM } from "../../enum/service/CountryCode";
 
-interface UserData {
+export interface UserData {
     username: string;
-    image: string;
+    image?: string;
     nationality?: COUNTRY_CODE_ENUM;
     working_country?: COUNTRY_CODE_ENUM;
+    location?: string;
 }
 
 export interface ReqGetUserData {}
@@ -30,5 +31,7 @@ export interface ResMyPage {
     orgn_requests: RequestCard[];
 }
 
-export interface ReqUpdateUserProfile extends UserData {}
+export interface ReqUpdateUserProfile extends Joi.extractType<typeof UserSchema> {}
+{
+}
 export interface ResUpdateUserProfile extends UserData {}
