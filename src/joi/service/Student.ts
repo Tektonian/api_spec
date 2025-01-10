@@ -1,40 +1,45 @@
 import Joi from "@hapi/joi";
 import parse from "joi-to-json";
-import { SCHOOL_STATUS_ENUM, SCHOOL_DEGREE_ENUM } from "../../enum/service/Student";
 import { COUNTRY_CODE_ENUM } from "../../enum/service/CountryCode";
+import { ExamEnum, UserEnum, AcademicEnum } from "../../enum";
 
 const AcademicHistoryData = Joi.object({
     school_id: Joi.number().positive().required(),
-    degree: Joi.number().required().allow(Object.values(SCHOOL_DEGREE_ENUM)).description("Bachelor | Master | Doctor"),
+    degree: Joi.number()
+        .required()
+        .valid(Object.values(AcademicEnum.ACADEMIC_DEGREE_ENUM))
+        .description("Bachelor | Master | Doctor"),
     faculty: Joi.string().required(),
     status: Joi.number()
-        .valid(Object.values(SCHOOL_STATUS_ENUM))
+        .valid(Object.values(AcademicEnum.ACADEMIC_STATUS_ENUM))
         .description("In Progress | Graduated | Leave of Absence"),
-    start_date: Joi.date().iso().required(),
-    end_date: Joi.date().iso().required().description("Graduated Date Or Expecting Graduation Date"),
+    start_date: Joi.string().required(),
+    end_date: Joi.string().required().description("Graduated Date Or Expecting Graduation Date"),
 });
 
 const LanguageData = Joi.object({
-    exam_result: Joi.string().required(),
+    level: Joi.any()
+        .required()
+        .valid(...Object.values(ExamEnum.EXAM_LEVEL_ENUM)),
     exam_id: Joi.number().positive().required(),
 });
 
 export const ReqCreateStudentProfileSchema = Joi.object({
-    name_glb: Joi.array().items(
-        Joi.object({
-            country_code: Joi.string().required().allow(Object.values(COUNTRY_CODE_ENUM)),
-            name: Joi.string().required(),
-        }),
-    ),
-    nationality: Joi.string().required().allow(Object.values(COUNTRY_CODE_ENUM)),
+    name_glb: Joi.object().pattern(Joi.string().valid(Object.values(COUNTRY_CODE_ENUM)), Joi.string()),
     academic_history: Joi.array().items(AcademicHistoryData),
     exam_history: Joi.array().items(LanguageData),
     // TODO: image
-    birth_date: Joi.date().iso().required(),
-    gender: Joi.number().required().allow(0, 1).description("0: Male, 1: Female"),
-    has_car: Joi.number().required().allow(0, 1),
+    birth_date: Joi.string().required(),
+    gender: Joi.any()
+        .required()
+        .valid(...Object.values(UserEnum.USER_GENDER_ENUM))
+        .description("0: Male, 1: Female"),
+    has_car: Joi.any()
+        .required()
+        .valid(...Object.values(UserEnum.USER_GENDER_ENUM)),
     keyword_list: Joi.array()
         .items(Joi.string().required(), Joi.string().required(), Joi.string().required())
+        .length(3)
         .description("3 Keywords that Express Student"),
     phone_number: Joi.string().required().description("Is not Exposed to Others"),
     emergency_contact: Joi.string().required().description("Is not Exposed to Others"),
