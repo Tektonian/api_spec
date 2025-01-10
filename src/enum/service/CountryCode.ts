@@ -19,7 +19,7 @@ export const COUNTRY_CODE_ENUM = {
     Iceland: "IS",
     Italy: "IT",
     Japan: "JP",
-    South_Korea: "KR",
+    South_Korea: "KO",
     Luxembourg: "LU",
     Mexico: "MX",
     Netherlands: "NL",
