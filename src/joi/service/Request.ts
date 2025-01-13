@@ -11,7 +11,7 @@ export const ReqCreateRequestSchema = Joi.object({
             .required()
             .valid(Object.values(COUNTRY_CODE_ENUM))
             .description("국가 코드 - 화폐 단위로 변경하는 데이터 후처리 필요"),
-        address: Joi.string(),
+        address: Joi.string().valid(""),
         head_count: Joi.number().required().min(1),
         content: Joi.string().required(),
         start_date: Joi.date().iso().required().description("의뢰 수행을 시작하는 날짜"),
@@ -20,8 +20,8 @@ export const ReqCreateRequestSchema = Joi.object({
             .required()
             .description("의뢰 수행이 종료되는 날짜 - 이때까지 수행되지 않으면 환불 후 수행 실패 판정"),
         address_coordinate: Joi.object({
-            lat: Joi.number(),
-            lng: Joi.number(),
+            lat: Joi.number().default(0),
+            lng: Joi.number().default(0),
         }),
         provide_food: Joi.boolean().required(),
         provide_trans_exp: Joi.boolean().required(),

@@ -37,9 +37,6 @@ interface CommonStudentData {
 }
 
 export interface StudentCardData extends CommonStudentData {
-    name_glb: {
-        [country_code in COUNTRY_CODE_ENUM]?: string;
-    };
     nationality: COUNTRY_CODE_ENUM;
     major: string;
     academic_history: AcademicHistoryData[];
@@ -51,20 +48,22 @@ interface StudentOpenData extends CommonStudentData {
     keyword_list: string[];
 }
 
-interface StudentPrivateData {
-    birth_date?: string;
-    gender?: USER_GENDER_ENUM;
-    phone_number?: string;
-    emergency_contact?: string;
+interface StudentPrivateData<IncludePrivate extends boolean> {
+    birth_date: IncludePrivate extends true ? string : undefined;
+    gender: IncludePrivate extends true ? USER_GENDER_ENUM : undefined;
+    phone_number: IncludePrivate extends true ? string : undefined;
+    emergency_contact: IncludePrivate extends true ? string : undefined;
 }
 
-export interface StudentProfileData extends StudentOpenData, StudentPrivateData {}
+export interface StudentProfileData<IncludePrivate extends boolean>
+    extends StudentOpenData,
+        StudentPrivateData<IncludePrivate> {}
 
 export interface ReqGetStudentProfile {
     student_id: number;
 }
 
-export interface ResGetStudentProfile extends StudentProfileData {}
+export interface ResGetStudentProfile<IncludePrivate extends boolean> extends StudentProfileData<IncludePrivate> {}
 
 // Override keyword_list type for type inference of IDE
 export interface ReqCreateStudentProfile

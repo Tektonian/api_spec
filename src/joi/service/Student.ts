@@ -25,7 +25,9 @@ const LanguageData = Joi.object({
 });
 
 export const ReqCreateStudentProfileSchema = Joi.object({
-    name_glb: Joi.object().pattern(Joi.string().valid(Object.values(COUNTRY_CODE_ENUM)), Joi.string()),
+    name_glb: Joi.object()
+        .pattern(Joi.string().valid(Object.values(COUNTRY_CODE_ENUM)), Joi.string())
+        .required(),
     academic_history: Joi.array().items(AcademicHistoryData),
     exam_history: Joi.array().items(LanguageData),
     // TODO: image

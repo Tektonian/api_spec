@@ -10,11 +10,11 @@ export type StudentAPISpec = Tspec.DefineApiSpec<{
         "/:student_id": {
             get: {
                 summary: "Get student profile";
-                description: "Get student profile";
+                description: "This api usually is being used for student information page";
                 header: {
                     session: "'normal' | 'corp' | 'orgn' ";
                 };
-                handler: RequestHandler<ReqGetStudentProfile, ResGetStudentProfile>;
+                handler: RequestHandler<ReqGetStudentProfile, ResGetStudentProfile<false>>;
             };
         };
         "/update": {

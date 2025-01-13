@@ -9,11 +9,7 @@ export interface ResCreateCorpProfile {
     corp_id: string;
 }
 
-export interface ReqGetCorpProfile {
-    corp_id: number;
-}
-
-export interface ResGetCorpProfile {
+export interface CorpCardData {
     /** Id of Corporation */
     corp_id: number;
     /** Name of Corporation */
@@ -32,3 +28,9 @@ export interface ResGetCorpProfile {
     /** TODO: 지금은 필요할 것 같아서 그대로 유지 나중에 없애기 -> 서비스가 불안정해서 개인 연락 필요할수도? */
     phone_number?: string;
 }
+
+export interface ReqGetCorpProfile {
+    corp_id: number;
+}
+
+export interface ResGetCorpProfile extends CorpCardData {}

@@ -23,7 +23,7 @@ export interface ReqMyPage {}
 export interface ResMyPage {
     // user_profile: UserData;
     user_requests: RequestCard[];
-    student_profile?: ResGetStudentProfile;
+    student_profile?: ResGetStudentProfile<true>;
     student_requests: RequestCard[];
     corp_profile?: ResGetCorpProfile;
     corp_requests: RequestCard[];
