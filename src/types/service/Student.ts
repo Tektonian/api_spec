@@ -1,9 +1,7 @@
-import "joi-extract-type";
-import * as Joi from "@hapi/joi";
 import { ACADEMIC_STATUS_ENUM } from "../../enum/service/Academic";
 import { USER_GENDER_ENUM } from "../../enum/service/User";
 import { COUNTRY_CODE_ENUM } from "../../enum/service/CountryCode";
-import { ReqCreateStudentProfileSchema } from "../../joi/service/Student";
+import { ReqCreateStudentProfileSchema } from "../../zod/service/Student";
 import { z } from "zod";
 
 export interface AcademicHistoryData {

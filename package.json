@@ -21,10 +21,10 @@
                 "types": "./dist/esm/enum/index.d.ts"
             }
         },
-        "./joi": {
+        "./zod": {
             "import": {
-                "default": "./dist/esm/joi/index.js",
-                "types": "./dist/esm/joi/index.d.ts"
+                "default": "./dist/esm/zod/index.js",
+                "types": "./dist/esm/zod/index.d.ts"
             }
         }
     },
@@ -60,7 +60,9 @@
         "typescript": "^5.7.2"
     },
     "dependencies": {
-        "tspec": "file:../tspec-with-joi-to-json/packages/tspec/tspec-0.1.116.tgz",
+        "tspec": "file:../tspec-with-joi-to-json/packages/tspec/tspec-0.1.116.tgz"
+    },
+    "peerDependencies": {
         "zod": "^3.24.1",
         "zod-to-json-schema": "^3.24.1"
     }

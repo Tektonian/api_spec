@@ -3,11 +3,10 @@ import { dts } from "rollup-plugin-dts";
 import peerDepsExternal from "rollup-plugin-peer-deps-external";
 import resolve from "@rollup/plugin-commonjs";
 
-const External = ["@hapi/joi, joi-to-json"];
-
+const External = ["zod", "zod-to-json-schema"];
 export default [
     {
-        input: ["./src/index.ts", "src/types/index.ts", "src/api/index.ts", "src/enum/index.ts", "src/joi/index.ts"],
+        input: ["./src/index.ts", "src/types/index.ts", "src/api/index.ts", "src/enum/index.ts", "src/zod/index.ts"],
         external: External,
         output: [
             {

@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { ReqCreateStudentReveiwSchema } from "../../joi/service/StudentReview";
+import { ReqCreateStudentReveiwSchema } from "../../zod/service/StudentReview";
 
 // Model attribute
 export interface ReqCreateStudentReveiw extends z.infer<typeof ReqCreateStudentReveiwSchema> {}

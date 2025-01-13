@@ -1,5 +1,5 @@
 import { RequestHandler } from "express";
-import { ReqSearchSchoolScheme } from "../../joi/search/School";
+import { ReqSearchSchoolScheme } from "../../zod/search/School";
 import { ReqSearchSchool, ResSearchSchool } from "../../types/search/School";
 import { Tspec } from "tspec";
 

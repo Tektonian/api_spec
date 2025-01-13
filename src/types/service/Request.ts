@@ -1,6 +1,6 @@
 import { z } from "zod";
-import { ReqAllRequestCardSchema } from "../../joi/service/Request";
-import { ReqCreateRequestSchema } from "../../joi/service/Request";
+import { ReqAllRequestCardSchema } from "../../zod/service/Request";
+import { ReqCreateRequestSchema } from "../../zod/service/Request";
 import type { REQUEST_STATUS_ENUM } from "../../enum/service/Request";
 import type { USER_ROLE_ENUM } from "../../enum/service/User";
 

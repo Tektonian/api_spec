@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { ReqCreateCorpReviewSchema } from "../../joi/service/CorporationReview";
+import { ReqCreateCorpReviewSchema } from "../../zod/service/CorporationReview";
 
 interface CorpReview {
     request_id: number;

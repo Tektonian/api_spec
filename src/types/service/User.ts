@@ -2,7 +2,7 @@ import { z } from "zod";
 import { ResGetStudentProfile } from "./Student";
 import { RequestCard } from "./Request";
 import { ResGetCorpProfile } from "./Corporation";
-import { UserSchema } from "../../joi/service/User";
+import { UserSchema } from "../../zod/service/User";
 import { COUNTRY_CODE_ENUM } from "../../enum/service/CountryCode";
 
 export interface UserData {

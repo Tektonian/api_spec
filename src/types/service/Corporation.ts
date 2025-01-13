@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { ReqCreateCorpProfileSchema } from "../../joi/service/Corporation";
+import { ReqCreateCorpProfileSchema } from "../../zod/service/Corporation";
 import { COUNTRY_CODE_ENUM } from "../../enum/service/CountryCode";
 
 export interface ReqCreateCorpProfile extends z.infer<typeof ReqCreateCorpProfileSchema> {}

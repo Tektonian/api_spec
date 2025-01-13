@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { ReqSearchSchoolScheme } from "../../joi/search/School";
+import { ReqSearchSchoolScheme } from "../../zod/search/School";
 
 export interface ReqSearchSchool extends z.infer<typeof ReqSearchSchoolScheme> {}
 
