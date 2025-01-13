@@ -1,9 +1,8 @@
-import "joi-extract-type";
-import * as Joi from "@hapi/joi";
+import { z } from "zod";
 import { ReqCreateCorpProfileSchema } from "../../joi/service/Corporation";
 import { COUNTRY_CODE_ENUM } from "../../enum/service/CountryCode";
 
-export interface ReqCreateCorpProfile extends Joi.extractType<typeof ReqCreateCorpProfileSchema> {}
+export interface ReqCreateCorpProfile extends z.infer<typeof ReqCreateCorpProfileSchema> {}
 
 export interface ResCreateCorpProfile {
     corp_id: string;

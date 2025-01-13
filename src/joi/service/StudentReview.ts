@@ -1,23 +1,23 @@
-import Joi from "@hapi/joi";
-import parse from "joi-to-json";
+import { z } from "zod";
+import zodToJsonSchema from "zod-to-json-schema";
 
-const EvaluationScore = Joi.number().required().min(0).max(10);
+const EvaluationScore = z.number().min(0).max(10);
 
-export const ReqCreateStudentReveiwSchema = Joi.object({
-    consumer_id: Joi.number().required().description("Consumer id of Consumer table"),
-    student_id: Joi.number().required().description("Student id of Student table"),
-    request_id: Joi.number().required().description("Request id of Request table"),
+export const ReqCreateStudentReveiwSchema = z.object({
+    consumer_id: z.number().describe("Consumer id of Consumer table"),
+    student_id: z.number().describe("Student id of Student table"),
+    request_id: z.number().describe("Request id of Request table"),
     // Score of student review
-    was_late: EvaluationScore.description("How student late for work"),
-    was_proactive: EvaluationScore.description("How student late for work"),
-    was_diligent: EvaluationScore.description("How student late for work"),
-    commu_ability: EvaluationScore.description("How student late for work"),
-    lang_fluent: EvaluationScore.description("How student late for work"),
-    goal_fulfillment: EvaluationScore.description("How student late for work"),
-    want_cowork: EvaluationScore.description("How student late for work"),
+    was_late: EvaluationScore.describe("How student late for work"),
+    was_proactive: EvaluationScore.describe("How student late for work"),
+    was_diligent: EvaluationScore.describe("How student late for work"),
+    commu_ability: EvaluationScore.describe("How student late for work"),
+    lang_fluent: EvaluationScore.describe("How student late for work"),
+    goal_fulfillment: EvaluationScore.describe("How student late for work"),
+    want_cowork: EvaluationScore.describe("How student late for work"),
 
-    praise: Joi.string().required(),
-    need_improve: Joi.string().required(),
+    praise: z.string(),
+    need_improve: z.string(),
 });
 
-export const ReqCreateStudentReveiwSchemaJson = parse(ReqCreateStudentReveiwSchema);
+export const ReqCreateStudentReveiwSchemaJson = zodToJsonSchema(ReqCreateStudentReveiwSchema);

@@ -1,11 +1,7 @@
-import * as Joi from "@hapi/joi";
-// This is optional, but without it you need to manually generate
-// a type or interface for ValidatedRequestSchema members
-import "joi-extract-type";
-
+import { z } from "zod";
 import { ReqSearchSchoolScheme } from "../../joi/search/School";
 
-export interface ReqSearchSchool extends Joi.extractType<typeof ReqSearchSchoolScheme> {}
+export interface ReqSearchSchool extends z.infer<typeof ReqSearchSchoolScheme> {}
 
 interface SearchSchoolData {
     school_id: number;
@@ -13,7 +9,4 @@ interface SearchSchoolData {
     school_name_glb: Object;
     country_code: string;
 }
-export interface ResSearchSchool {
-    status: string;
-    ret: SearchSchoolData[];
-}
+export interface ResSearchSchool extends Array<SearchSchoolData> {}

@@ -59,7 +59,7 @@ export type RequestAPISpec = Tspec.DefineApiSpec<{
                      */
                     session: "normal" | "corp" | "orgn" | "student";
                 };
-                handler: RequestHandler<undefined, ResAllRequestCard, Pick<ReqAllRequestCard, "student_id">>;
+                handler: RequestHandler<undefined, ResAllRequestCard, "student_id">;
                 responses: {
                     /** Success */
                     200: ResAllRequestCard;
@@ -78,7 +78,7 @@ export type RequestAPISpec = Tspec.DefineApiSpec<{
                      */
                     session: "corp" | "orgn" | "student";
                 };
-                handler: RequestHandler<undefined, ResAllRequestCard, Pick<ReqAllRequestCard, "corp_id">>;
+                handler: RequestHandler<undefined, ResAllRequestCard, "corp_id">;
                 responses: {
                     /** Success */
                     200: ResAllRequestCard;
@@ -97,7 +97,7 @@ export type RequestAPISpec = Tspec.DefineApiSpec<{
                      */
                     session: "corp" | "orgn" | "student";
                 };
-                handler: RequestHandler<undefined, ResAllRequestCard, Pick<ReqAllRequestCard, "orgn_id">>;
+                handler: RequestHandler<undefined, ResAllRequestCard, "orgn_id">;
                 responses: {
                     /** Success */
                     200: ResAllRequestCard;

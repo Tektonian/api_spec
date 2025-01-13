@@ -1,14 +1,14 @@
-import Joi from "@hapi/joi";
-import parse from "joi-to-json";
+import { z } from "zod";
+import zodToJsonSchema from "zod-to-json-schema";
 
-const EvaluationScore = Joi.number().required().min(0).max(10);
+const EvaluationScore = z.number().min(0).max(10);
 
-export const ReqCreateCorpReviewSchema = Joi.object({
-    request_id: Joi.number().positive().required(),
-    review_text: Joi.string().required(),
-    prep_requirement: Joi.string().description("다른 학생들에게 어떠한 것이 있으면 좋다고 조언하기 위해서"),
-    work_atmosphere: Joi.string().required(),
+export const ReqCreateCorpReviewSchema = z.object({
+    request_id: z.number().positive(),
+    review_text: z.string(),
+    prep_requirement: z.string().optional().describe("다른 학생들에게 어떠한 것이 있으면 좋다고 조언하기 위해서"),
+    work_atmosphere: z.string(),
     sense_of_achive: EvaluationScore,
 });
 
-export const ReqCreateCorpReviewSchemaJSON = parse(ReqCreateCorpReviewSchema);
+export const ReqCreateCorpReviewSchemaJSON = zodToJsonSchema(ReqCreateCorpReviewSchema);

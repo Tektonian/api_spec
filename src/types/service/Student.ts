@@ -4,6 +4,7 @@ import { ACADEMIC_STATUS_ENUM } from "../../enum/service/Academic";
 import { USER_GENDER_ENUM } from "../../enum/service/User";
 import { COUNTRY_CODE_ENUM } from "../../enum/service/CountryCode";
 import { ReqCreateStudentProfileSchema } from "../../joi/service/Student";
+import { z } from "zod";
 
 export interface AcademicHistoryData {
     school_id: number;
@@ -66,10 +67,8 @@ export interface ReqGetStudentProfile {
 export interface ResGetStudentProfile<IncludePrivate extends boolean> extends StudentProfileData<IncludePrivate> {}
 
 // Override keyword_list type for type inference of IDE
-export interface ReqCreateStudentProfile
-    extends Omit<Joi.extractType<typeof ReqCreateStudentProfileSchema>, "keyword_list"> {
-    keyword_list: string[];
-}
+export interface ReqCreateStudentProfile extends z.infer<typeof ReqCreateStudentProfileSchema> {}
+
 export interface ResCreateStudentProfile {}
 
 export interface ReqUpdateStudentProfile extends ReqCreateStudentProfile {}

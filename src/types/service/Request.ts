@@ -1,5 +1,4 @@
-import "joi-extract-type";
-import * as Joi from "@hapi/joi";
+import { z } from "zod";
 import { ReqAllRequestCardSchema } from "../../joi/service/Request";
 import { ReqCreateRequestSchema } from "../../joi/service/Request";
 import type { REQUEST_STATUS_ENUM } from "../../enum/service/Request";
@@ -43,7 +42,7 @@ interface RequestData extends RequestCard {
 }
 
 // Model attribute
-export interface ReqCreateRequest extends Joi.extractType<typeof ReqCreateRequestSchema> {}
+export interface ReqCreateRequest extends z.infer<typeof ReqCreateRequestSchema> {}
 
 export interface ResCreateRequest {
     request_id: number;
@@ -83,7 +82,7 @@ export interface ResGetRequest extends RequestData {}
  * | 기업 또는 정부 | 회사 프로필 정보 & RequestCard<orgn | corp, POSTED | FINISHED> | x |
  * | 학생 | 회사 프로필 정보 & RequestCard<orgn | corp, POSTED | FINISHED> | 기업 또는 정부에 대해서 학생이 남긴 리뷰 |
  */
-export interface ReqAllRequestCard extends Joi.extractType<typeof ReqAllRequestCardSchema> {}
+export interface ReqAllRequestCard extends z.infer<typeof ReqAllRequestCardSchema> {}
 
 export interface ResAllRequestCard {
     requests: RequestCard[];

@@ -1,53 +1,36 @@
-import Joi from "@hapi/joi";
-import parse from "joi-to-json";
+import { z } from "zod";
+import zodToJsonSchema from "zod-to-json-schema";
 import { COUNTRY_CODE_ENUM } from "../../enum/service/CountryCode";
 import { ExamEnum, UserEnum, AcademicEnum } from "../../enum";
 
-const AcademicHistoryData = Joi.object({
-    school_id: Joi.number().positive().required(),
-    degree: Joi.number()
-        .required()
-        .valid(Object.values(AcademicEnum.ACADEMIC_DEGREE_ENUM))
-        .description("Bachelor | Master | Doctor"),
-    faculty: Joi.string().required(),
-    status: Joi.number()
-        .valid(Object.values(AcademicEnum.ACADEMIC_STATUS_ENUM))
-        .description("In Progress | Graduated | Leave of Absence"),
-    start_date: Joi.string().required(),
-    end_date: Joi.string().required().description("Graduated Date Or Expecting Graduation Date"),
+const AcademicHistoryData = z.object({
+    school_id: z.number().positive(),
+    degree: z.nativeEnum(AcademicEnum.ACADEMIC_DEGREE_ENUM).describe("Bachelor | Master | Doctor"),
+    faculty: z.string(),
+    status: z.nativeEnum(AcademicEnum.ACADEMIC_STATUS_ENUM).describe("In Progress | Graduated | Leave of Absence"),
+    start_date: z.string(),
+    end_date: z.string().describe("Graduated Date Or Expecting Graduation Date"),
 });
 
-const LanguageData = Joi.object({
-    level: Joi.any()
-        .required()
-        .valid(...Object.values(ExamEnum.EXAM_LEVEL_ENUM)),
-    exam_id: Joi.number().positive().required(),
+const LanguageData = z.object({
+    level: z.nativeEnum(ExamEnum.EXAM_LEVEL_ENUM),
+    exam_id: z.number().positive(),
 });
 
-export const ReqCreateStudentProfileSchema = Joi.object({
-    name_glb: Joi.object()
-        .pattern(Joi.string().valid(Object.values(COUNTRY_CODE_ENUM)), Joi.string())
-        .required(),
-    academic_history: Joi.array().items(AcademicHistoryData),
-    exam_history: Joi.array().items(LanguageData),
-    // TODO: image
-    birth_date: Joi.string().required(),
-    gender: Joi.any()
-        .required()
-        .valid(...Object.values(UserEnum.USER_GENDER_ENUM))
-        .description("0: Male, 1: Female"),
-    has_car: Joi.any()
-        .required()
-        .valid(...Object.values(UserEnum.USER_GENDER_ENUM)),
-    keyword_list: Joi.array()
-        .items(Joi.string().required(), Joi.string().required(), Joi.string().required())
-        .length(3)
-        .description("3 Keywords that Express Student"),
-    phone_number: Joi.string().required().description("Is not Exposed to Others"),
-    emergency_contact: Joi.string().required().description("Is not Exposed to Others"),
+export const ReqCreateStudentProfileSchema = z.object({
+    name_glb: z.record(z.nativeEnum(COUNTRY_CODE_ENUM), z.string()),
+    academic_history: z.array(AcademicHistoryData),
+    exam_history: z.array(LanguageData),
+    /** TODO: add image later */
+    birth_date: z.string(),
+    gender: z.nativeEnum(UserEnum.USER_GENDER_ENUM).describe("0: Male, 1: Female"),
+    has_car: z.nativeEnum(UserEnum.USER_GENDER_ENUM),
+    keyword_list: z.array(z.string()).length(3).describe("3 Keywords that Express Student"),
+    phone_number: z.string().describe("Is not Exposed to Others"),
+    emergency_contact: z.string().describe("Is not Exposed to Others"),
 });
 
-export const ReqCreateStudentProfileSchemaJSON = parse(ReqCreateStudentProfileSchema);
+export const ReqCreateStudentProfileSchemaJSON = zodToJsonSchema(ReqCreateStudentProfileSchema, {});
 
 /**
  * TODO: 학과 정보 파싱 임시 저장

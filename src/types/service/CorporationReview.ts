@@ -1,5 +1,4 @@
-import "joi-extract-type";
-import * as Joi from "@hapi/joi";
+import { z } from "zod";
 import { ReqCreateCorpReviewSchema } from "../../joi/service/CorporationReview";
 
 interface CorpReview {
@@ -16,7 +15,7 @@ interface StudentReviewProvider {
     student_image: string;
 }
 
-export interface ReqCreateCorpReview extends Joi.extractType<typeof ReqCreateCorpReviewSchema> {}
+export interface ReqCreateCorpReview extends z.infer<typeof ReqCreateCorpReviewSchema> {}
 
 export interface ResCreateCorpReview {}
 

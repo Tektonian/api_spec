@@ -9,8 +9,8 @@ export type SearchSchoolAPISpec = Tspec.DefineApiSpec<{
     paths: {
         "/": {
             get: {
-                summary: "Get recommended student list";
-                description: "Get Recommend student list by request_id";
+                summary: "Get school list";
+                description: "Get school list by country code";
                 responses: {
                     200: ResSearchSchool;
                 };

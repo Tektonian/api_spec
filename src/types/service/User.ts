@@ -1,5 +1,4 @@
-import "joi-extract-type";
-import * as Joi from "@hapi/joi";
+import { z } from "zod";
 import { ResGetStudentProfile } from "./Student";
 import { RequestCard } from "./Request";
 import { ResGetCorpProfile } from "./Corporation";
@@ -31,7 +30,7 @@ export interface ResMyPage {
     orgn_requests: RequestCard[];
 }
 
-export interface ReqUpdateUserProfile extends Joi.extractType<typeof UserSchema> {}
+export interface ReqUpdateUserProfile extends z.infer<typeof UserSchema> {}
 {
 }
 export interface ResUpdateUserProfile extends UserData {}
