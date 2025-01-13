@@ -20,18 +20,14 @@ export interface LanguageData {
     level: number;
     exam_result: string;
     /** 시험 명칭 */
-    exam_name_glb: {
-        [country_code in COUNTRY_CODE_ENUM]?: string;
-    };
+    exam_name_glb: Partial<Record<COUNTRY_CODE_ENUM, string>>;
     /** 어떠한 언어를 대상으로 하는 시험인지 */
     language: string;
 }
 
 interface CommonStudentData {
     student_id: number;
-    name_glb: {
-        [country_code in COUNTRY_CODE_ENUM]?: string;
-    };
+    name_glb: Partial<Record<COUNTRY_CODE_ENUM, string>>;
     image?: string;
 }
 
@@ -43,7 +39,7 @@ export interface StudentCardData extends CommonStudentData {
 }
 
 interface StudentOpenData extends CommonStudentData {
-    has_car: 0 | 1;
+    has_car: USER_GENDER_ENUM;
     keyword_list: string[];
 }
 
