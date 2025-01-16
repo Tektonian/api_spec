@@ -4,7 +4,10 @@ import { COUNTRY_CODE_ENUM } from "../../enum/service/CountryCode";
 import { ExamEnum, UserEnum, AcademicEnum } from "../../enum";
 
 const AcademicHistoryData = z.object({
-    school_id: z.number().positive(),
+    school_id: z
+        .string()
+        .uuid()
+        .transform((val) => Buffer.from(val.replaceAll("-", ""), "hex")),
     degree: z.nativeEnum(AcademicEnum.ACADEMIC_DEGREE_ENUM).describe("Bachelor | Master | Doctor"),
     faculty: z.string(),
     status: z.nativeEnum(AcademicEnum.ACADEMIC_STATUS_ENUM).describe("In Progress | Graduated | Leave of Absence"),
@@ -14,7 +17,10 @@ const AcademicHistoryData = z.object({
 
 const LanguageData = z.object({
     level: z.nativeEnum(ExamEnum.EXAM_LEVEL_ENUM),
-    exam_id: z.number().positive(),
+    exam_id: z
+        .string()
+        .uuid()
+        .transform((val) => Buffer.from(val.replaceAll("-", ""), "hex")),
 });
 
 export const ReqCreateStudentProfileSchema = z.object({
