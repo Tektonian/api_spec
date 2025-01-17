@@ -15,4 +15,3 @@ export type SearchExamAPISpec = Tspec.DefineApiSpec<{
       },
     },
   }>;
-

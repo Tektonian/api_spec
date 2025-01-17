@@ -9,4 +9,3 @@ export const VERIFICATION_TOKEN_ENUM = {
 } as const
 
 export type VERIFICATION_TOKEN_ENUM = typeof VERIFICATION_TOKEN_ENUM[keyof typeof VERIFICATION_TOKEN_ENUM]
-

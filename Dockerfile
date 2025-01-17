@@ -10,7 +10,7 @@ COPY . /mesh/api_spec
 WORKDIR /mesh/api_spec
 
 RUN npm install
- 
+
 RUN npm run build
 # 실행 명령어
 CMD ["npm", "run", "pack"]

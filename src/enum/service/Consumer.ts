@@ -8,4 +8,3 @@ export const CONSUMER_ENUM = {
 } as const
 
 export type CONSUMER_ENUM = typeof CONSUMER_ENUM[keyof typeof CONSUMER_ENUM]
-

@@ -9,7 +9,7 @@ export interface ReqCallbackIdentityVerify {
     token: string;
     verifyEmail: string;
     phoneNumber: string;
-    IdentityId: CorpId | OrgnId | StudentId; 
+    IdentityId: CorpId | OrgnId | StudentId;
     type: IdentityTypes;
 }
 
@@ -19,7 +19,7 @@ export interface ResCallbackIdentityVerify {
 
 export interface ReqIdentityVeraify {
     verifyEmail: string;
-    type: IdentityTypes; 
+    type: IdentityTypes;
 }
 
 export interface ResIdentityVerify{
