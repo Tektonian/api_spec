@@ -10,7 +10,7 @@ export default [
         external: External,
         output: [
             {
-                dir: "dist/esm/",
+                dir: ".",
                 format: "esm",
                 preserveModules: true,
                 entryFileNames: "[name].js",
@@ -31,7 +31,7 @@ export default [
     },
     {
         input: "./src/index.ts",
-        output: [{ dir: "dist/esm/", format: "esm", preserveModules: true, entryFileNames: "[name].d.ts" }],
+        output: [{ dir: ".", format: "esm", preserveModules: true, entryFileNames: "[name].d.ts" }],
         plugins: [dts()],
         External,
     },

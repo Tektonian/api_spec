@@ -1,39 +1,37 @@
 {
-    "name": "api_spec",
+    "name": "@mesh/api_spec",
     "version": "1.0.0",
     "description": "API spec definition",
     "type": "module",
     "files": [
-        "dist",
+        "*.js",
         "*.d.ts",
         "openapi.json"
     ],
+    "main": "./src/index.ts",
     "exports": {
         ".": {
             "import": {
-                "default": "./dist/esm/index.js",
-                "types": "./dist/esm/index.d.ts"
+                "default": "./src/index.ts"
             }
         },
         "./enum": {
             "import": {
-                "default": "./dist/esm/enum/index.js",
-                "types": "./dist/esm/enum/index.d.ts"
+                "default": "./src/enum/index.ts"
             }
         },
         "./zod": {
             "import": {
-                "default": "./dist/esm/zod/index.js",
-                "types": "./dist/esm/zod/index.d.ts"
+                "default": "./src/zod/index.ts"
             }
         }
     },
     "scripts": {
-        "server": "npx tspec generate --specPathGlobs \"src/**/*.ts\" && npx tspec server --specPathGlobs \"src/**/*.ts\"",
-        "doc": "npx tspec generate --specPathGlobs \"src/**/*.ts\"",
+        "server": "yarn tspec generate --specPathGlobs \"src/**/*.ts\" && yarn tspec server --specPathGlobs \"src/**/*.ts\"",
+        "doc": "yarn tspec generate --specPathGlobs \"src/**/*.ts\"",
         "test": "echo \"Error: no test specified\" && exit 1",
-        "build": "npx rollup -c && bash scripts/postbuild.sh",
-        "pack": "npm pack && bash scripts/postpack.sh"
+        "build": "yarn rollup -c && bash scripts/postbuild.sh",
+        "pack": "yarn pack && bash scripts/postpack.sh"
     },
     "author": "",
     "license": "ISC",
@@ -42,12 +40,14 @@
         "@babel/core": "^7.26.0",
         "@babel/preset-env": "^7.26.0",
         "@babel/preset-typescript": "^7.26.0",
+        "@mesh/tspec-with-zod": "workspace:*",
         "@rollup/plugin-babel": "^6.0.4",
         "@rollup/plugin-commonjs": "^28.0.1",
         "@rollup/plugin-multi-entry": "^6.0.1",
         "@rollup/plugin-node-resolve": "^15.3.0",
         "@rollup/plugin-typescript": "^12.1.1",
         "@types/express": "^4.17.21",
+        "@types/node": "^22.10.7",
         "cross-env": "^7.0.3",
         "eslint": "^9.16.0",
         "eslint-config-prettier": "^9.1.0",
@@ -57,12 +57,10 @@
         "rollup-plugin-dts": "^6.1.1",
         "rollup-plugin-peer-deps-external": "^2.2.4",
         "ts-node": "^10.9.2",
-        "tspec": "file:../tspec-with-joi-to-json/packages/tspec/tspec-0.1.116.tgz",
-        "typescript": "^5.7.2"
-    },
-    "peerDependencies": {
-        "zod": "^3.24.1",
         "zod-to-json-schema": "^3.24.1"
+    },
+    "dependencies": {
+        "zod": "^3.24.1"
     },
     "packageManager": "yarn@4.6.0"
 }
